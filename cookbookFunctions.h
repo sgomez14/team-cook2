@@ -1,6 +1,3 @@
-#ifndef COOKBOOKFUNCTIONS
-#define COOKBOOKFUNCTIONS
-
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -14,18 +11,17 @@
 #include <sstream>
 using namespace std;
 
-void dirtyWrite(string name,string steps,string ingredients, string equipment); //change name
+void WriteRecipe(string name,string steps,string ingredients, string equipment);
 
-void dirtyDelete(int n); //change name
+void DeleteRecipe(int n);
 
 void indexBook(vector<recipe> cookbook);
-
 
 void initialise();
 
 void load(vector<recipe> &temp);
 
-void dirtyEdit(vector<recipe> &input);
+void EditRecipe(vector<recipe> &input);
 
 void vectorDump(vector<recipe> &input);
 
@@ -37,4 +33,3 @@ string returnConcatStringIngredients(recipe input);
 
 string returnConcatStringEquipment(recipe input);*/
 
-#endif

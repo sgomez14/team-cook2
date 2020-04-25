@@ -1,9 +1,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <chrono>
-#include <thread>
-#include <time.h>
 #include <unistd.h>
 #include "recipe.h"
 #include <cctype>
@@ -53,23 +50,23 @@ void load(vector<recipe> &cookbook){
 
     //Takes elements of a single line and loads them into corresponding arrays. For some reasons outputs a new line for all entires after the first. Issue is the previous line contains a "new line" character, and the name of the next line contains that. Causes the print command to print a new line before name. First input in while loop acts as a buffer, catching this endl.
     //Make into permanent heap based;
-    while (getline(input,dump,'/'),getline(input,name,'/'), getline(input, ingredientString, '/'), getline(input, stepString, '/'), getline(input, equipmentString, '/')){
+    while (getline(input,dump,'|'),getline(input,name,'|'), getline(input, ingredientString, '|'), getline(input, stepString, '|'), getline(input, equipmentString, '|')){
         stringstream ingWorking(ingredientString);
         stringstream stepWorking(stepString);
         stringstream equipmentWorking(equipmentString);
         while (ingWorking.good()){
             string subIng;
-            getline(ingWorking,subIng,',');
+            getline(ingWorking,subIng,'^');
             ingredients.push_back(subIng);
         }
         while (stepWorking.good()){
             string subSteps;
-            getline(stepWorking,subSteps,',');
+            getline(stepWorking,subSteps,'^');
             steps.push_back(subSteps);
         }
         while (equipmentWorking.good()){
             string subEquipment;
-            getline(equipmentWorking,subEquipment,',');
+            getline(equipmentWorking,subEquipment,'^');
             equipment.push_back(subEquipment);
         }
         recipe upload(name,ingredients,steps,equipment);
@@ -80,7 +77,7 @@ void load(vector<recipe> &cookbook){
     }
 }
 
-void dirtyWrite(string name,string steps,string ingredients, string equipment){                  //Add a concat string function to return a long string with spacing and new lines.
+void WriteRecipe(string name,string steps,string ingredients, string equipment){                  //Add a concat string function to return a long string with spacing and new lines.
     //cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');     //Flushes cin buffer.
     /*string name, steps, ingredients,equipment;
     //cout << "Enter recipe name: ";
@@ -92,14 +89,21 @@ void dirtyWrite(string name,string steps,string ingredients, string equipment){ 
     //cout << "Enter equipment, seperated by a comma: ";
     getline(cin , equipment);*/
 
+    cout << "Replacing Strings" << endl;
+    steps = ReplaceAll(steps, string("\n"),string("^"));
+    ingredients = ReplaceAll(ingredients,string("\n"),string("^"));
+    equipment = ReplaceAll(equipment, string("\n"),string("^"));
+
+    cout << steps << endl;
+
     ofstream file(path, ios::app);
-    string data("buffer/" + name + "/" + ingredients + "/" + steps + "/" + equipment + "/");
+    string data("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|");
     file << endl << data << endl;
     file.close();
 
 }
 
-void dirtyDelete(int n){    //TODO: PRUNE EMPTY LINES FROM COPY
+void DeleteRecipe(int n){    //TODO: PRUNE EMPTY LINES FROM COPY
     string line;
     int lineCounter = 0;
     ifstream input;
@@ -125,9 +129,8 @@ void dirtyDelete(int n){    //TODO: PRUNE EMPTY LINES FROM COPY
     //rename("temp.txt",path);
 }
 
-void dirtyEdit(vector<recipe> &input, int index){
-    //TODO: ADD SECTION FOR PARSING FROM TEXT BLOCK VIA REPLACEALL FUNCTION
-    string newSteps, newIngredients, newEquipment;
+void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIngredients, string newEquipment){
+    //string newSteps, newIngredients, newEquipment;
     //int n;
     //cout << "Enter index number: ";
     //cin >> n;
@@ -148,6 +151,10 @@ void dirtyEdit(vector<recipe> &input, int index){
         getline(cin,newIngredients);
         cout << "Enter Equipment, seperated by a coma: " << endl;
         getline(cin,newEquipment);*/
+        cout << "Replacing Strings" << endl;
+        newSteps = ReplaceAll(newSteps, "\n","^");
+        newIngredients = ReplaceAll(newIngredients, "\n","^");
+        newEquipment = ReplaceAll(newEquipment, "\n","^");
         input[index].recipe::clearSteps();
         input[index].recipe::clearIngredients();
         input[index].recipe::clearEquipment();
@@ -156,41 +163,50 @@ void dirtyEdit(vector<recipe> &input, int index){
         stringstream equipmentWorking(newEquipment);
         while (ingWorking.good()){
             string subIng;
-            getline(ingWorking,subIng,',');
+            getline(ingWorking,subIng,'^');
             input[index].recipe::pushIngredient(subIng);
         }
         while (stepWorking.good()){
             string subSteps;
-            getline(stepWorking,subSteps,',');
+            getline(stepWorking,subSteps,'^');
             input[index].recipe::pushSteps(subSteps);
         }
         while (equipmentWorking.good()){
             string subEquipment;
-            getline(equipmentWorking,subEquipment,',');
+            getline(equipmentWorking,subEquipment,'^');
             input[index].recipe::pushEquipment(subEquipment);
         }
-        input[index].recipe::printAllIngredients();
-        input[index].recipe::printAllSteps();
-        input[index].recipe::printAllEquipment();
+//         input[index].recipe::printAllIngredients();
+//         input[index].recipe::printAllSteps();
+//         input[index].recipe::printAllEquipment();
         vectorDump(input);
     }
 
 }
 
 //Below code based on replacAll by Gauthier Boaglio on Stack Overflow https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string
-string ReplaceAll(string str, const string& oldText, const string& newText) {
-    size_t start = 0;
-    while((start = str.find(oldText, start)) != std::string::npos) {
-        str.replace(start, oldText.length(), newText);
-        start += newText.length(); // Handles case where 'to' is a substring of 'from'
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+    size_t start_pos = 0;
+    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+        str.replace(start_pos, from.length(), to);
+        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
     }
     return str;
 }
 
+
+//string ReplaceAll(string str, const string& oldText, const string& newText) {
+//    size_t start = 0;
+//    while((start = str.find(oldText, start)) != std::string::npos) {
+//        str.replace(start, oldText.length(), newText);
+//        start += newText.length(); // Handles case where 'to' is a substring of 'from'
+//    }
+//    return str;
+//}
+
 //Outputs the current vector to a textfile and overwrites old one.
 void vectorDump(vector<recipe> &input){
     cout << "Test: Vector Dump" << endl;
-    int lineCounter = 0;
     ofstream inputTemp;
     inputTemp.open("temp.txt",ofstream::out);
     if(inputTemp.fail()) {
@@ -205,7 +221,7 @@ void vectorDump(vector<recipe> &input){
                 ingredients = input[i].recipe::getIngredient(j);
             }
             else{
-                ingredients = ingredients + "," + input[i].recipe::getIngredient(j);
+                ingredients = ingredients + "^" + input[i].recipe::getIngredient(j);
             }
         }
         for (int x = 0; x < input[i].recipe::getStepsVectorSize();x++){
@@ -214,7 +230,7 @@ void vectorDump(vector<recipe> &input){
             }
             else
             {
-                steps = steps + "," + input[i].recipe::getStep(x) ;
+                steps = steps + "^" + input[i].recipe::getStep(x) ;
             }
         }
         for (int x = 0; x < input[i].recipe::getEquipmentVectorSize();x++){
@@ -223,10 +239,10 @@ void vectorDump(vector<recipe> &input){
             }
             else
             {
-                equipment = equipment + "," + input[i].recipe::getEquipment(x) ;
+                equipment = equipment + "^" + input[i].recipe::getEquipment(x) ;
             }
         }
-        string line("buffer/" + name + "/" + ingredients + "/" + steps + "/" + equipment + "/");
+        string line("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|");
         inputTemp << line << endl;
     }
     inputTemp.close();

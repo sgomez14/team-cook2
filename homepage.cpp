@@ -46,11 +46,9 @@ HomePage::HomePage(QWidget *parent)
         receipeVector.append(readIn.readLine());
     }*/
 
-     cout << cookbook.size() << endl;
 
     for (int i=0; i < cookbook.size() ; i++) {
         ui->recipeList->addItem(new QListWidgetItem(QString::fromStdString((cookbook)[i].getName())));
-        cout << test << endl;
     }
 
 
