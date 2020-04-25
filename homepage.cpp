@@ -28,18 +28,6 @@ HomePage::HomePage(QWidget *parent)
 {
     ui->setupUi(this);
 
-    initialise();
-
-    /*QFile recipeData("C:/Users/santi09/Google Drive/Coding/327/team-cook/build-Cookbook-Desktop_Qt_5_14_2_MinGW_64_bit-Debug/dataToUpload.txt");
-
-    if (recipeData.open(QFile::ReadOnly | QFile::Text)){
-        //QMessageBox::warning(this, "recipe file not open");
-        cout << "recipe did not open";
-    }*/
-
-    //QTextStream readIn(&recipeData);
-
-    //QString saveWord;
 
     vector<recipe> cookbook;
 
@@ -51,7 +39,12 @@ HomePage::HomePage(QWidget *parent)
 
 
     for (int i=0; i < cookbook.size() ; i++) {
+
+        cout << "Reading in new recipe" << endl;
+
         ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/icons/logo3.png"), QString::fromStdString((cookbook)[i].getName())));
+
+
 
         int count = ui->recipeList->count();
 
@@ -60,7 +53,7 @@ HomePage::HomePage(QWidget *parent)
             item->setSizeHint(QSize(item->sizeHint().width(), 100));
         }
         ui->recipeList->setIconSize(QSize(100,100));
-        ui->recipeList->setStyleSheet("font: 50pt");
+        ui->recipeList->setStyleSheet("font: 25pt");
 
 
     }
@@ -92,11 +85,11 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
     int index = ui->recipeList->currentRow();
     Recipe_Viewer *recipe = new Recipe_Viewer();
 
-    QObject::connect(this, SIGNAL(sendIndex()), recipe, SLOT(setIndex(index)));
+    //QObject::connect(this, SIGNAL(sendIndex()), recipe, ///SLOT(setIndex(index)));
 
-    this->sendIndex(index);
+    //this->sendIndex(index);
 
-    //recipe->setIndex(index);
+    recipe->setIndex(index);
 
     //cout << item->type() <<endl;
     //Recipe_Viewer *recipe = new Recipe_Viewer();
