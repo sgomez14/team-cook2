@@ -77,7 +77,7 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
     QString equipment = ui->equipmentText->toPlainText();
 
-    dirtyWrite(recipeName.toStdString(),instructions.toStdString(), ingredients.toStdString(), equipment.toStdString());
+    WriteRecipe(recipeName.toStdString(),instructions.toStdString(), ingredients.toStdString(), equipment.toStdString());
 
     HomePage*  home = new HomePage();
     home->setAttribute(Qt::WA_DeleteOnClose);

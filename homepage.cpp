@@ -16,6 +16,7 @@
 #include <QIcon>
 #include <QObject>
 
+
 using namespace std;
 string test = "test";
 
@@ -48,11 +49,9 @@ HomePage::HomePage(QWidget *parent)
         receipeVector.append(readIn.readLine());
     }*/
 
-     cout << cookbook.size() << endl;
 
     for (int i=0; i < cookbook.size() ; i++) {
-        ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/icons/logo3.png"), QString::fromStdString((cookbook)[i].getName())));
-        cout << test << endl;
+        ui->recipeList->addItem(new QListWidgetItem(QString::fromStdString((cookbook)[i].getName())));
     }
 
 
@@ -77,6 +76,7 @@ void HomePage::on_addRecipeButton_clicked()
 void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 {
 
+
     cout << ui->recipeList->currentRow() <<endl;
     int index = ui->recipeList->currentRow();
     Recipe_Viewer *recipe = new Recipe_Viewer();
@@ -84,6 +84,10 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
     QObject::connect(this, SIGNAL(sendIndex(index)), recipe, SLOT(setIndex(index)));
 
     recipe->setIndex(index);
+
+    cout << item->type() <<endl;
+    /*Recipe_Viewer *recipe = new Recipe_Viewer();
+
     recipe->show();
     this->close();
 }
