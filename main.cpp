@@ -12,12 +12,19 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+
     /*if (css.length()>0)
     {
         a.setStyleSheet(css);
     }*/
 
     initialise();
+
+//    if (css.length()>0)
+//    {
+//        a.setStyleSheet(css);
+//    }
+
 
     HomePage w;
     w.show();
