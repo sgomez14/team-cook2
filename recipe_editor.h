@@ -33,6 +33,7 @@ class Recipe_Editor : public QMainWindow
 
 public:
     explicit Recipe_Editor(QWidget *parent = nullptr);
+    void displayRecipe(int index);
     ~Recipe_Editor();
 
 private slots:

@@ -1,5 +1,6 @@
 #include "recipe_viewer.h"
 #include "ui_recipe_viewer.h"
+#include "recipe_editor.h"
 #include <QFile>
 #include <QImage>
 #include <QString>
@@ -36,6 +37,11 @@ void Recipe_Viewer::setIndex(int index){
     recipeIndex = index;
 
     cout << "Recipe Index set" << endl;
+}
+
+
+int Recipe_Viewer::getIndex(){
+    return recipeIndex;
 }
 
 void Recipe_Viewer::displayRecipe(int index){
@@ -106,5 +112,56 @@ void Recipe_Editor::on_uploadPhoto_clicked()
 
 void Recipe_Viewer::on_nextRecipeButton_clicked()
 {
+
+    Recipe_Viewer *viewRecipe = new Recipe_Viewer();
+    vector<recipe> cookbook;
+    long cursize = cookbook.size() - 1;
+    recipeIndex = getIndex();
+    if(recipeIndex == cursize){
+        setIndex(0);
+    }
+    else{
+        setIndex(recipeIndex +1);
+    }
+
+    viewRecipe->setIndex(recipeIndex);
+
+    load(cookbook);
+
+    viewRecipe->displayRecipe(recipeIndex);
+
+    viewRecipe->show();
+    this->close();
+}
+
+void Recipe_Viewer::on_previousRecipeButton_clicked()
+{
+    Recipe_Viewer *viewRecipe = new Recipe_Viewer();
+    vector<recipe> cookbook;
+    recipeIndex = getIndex();
+    if(recipeIndex == 0){
+        setIndex(cookbook.size()-1);
+    }
+    else{
+        setIndex(recipeIndex-1);
+    }
+    viewRecipe->setIndex(recipeIndex);
+
+    load(cookbook);
+
+    viewRecipe->displayRecipe(recipeIndex);
+
+    viewRecipe->show();
+    this->close();
+}
+
+void Recipe_Viewer::on_editRecipeButton_clicked()
+{
+    Recipe_Editor *editorPage = new Recipe_Editor();
+    vector<recipe> cookbook;
+    editorPage->displayRecipe(recipeIndex);
+    //editorPage->setAttribute(Qt::WA_DeleteOnClose);
+    editorPage->show();
+    this->close();
 
 }
