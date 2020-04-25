@@ -103,3 +103,8 @@ void Recipe_Editor::on_uploadPhoto_clicked()
 
 
 }*/
+
+void Recipe_Viewer::on_nextRecipeButton_clicked()
+{
+
+}
