@@ -1,0 +1,7 @@
+This is a test file to practice, branching, pull, and merge.
+
+This is Santiago adding to the file.
+
+This is the third line i am adding.
+
+Hey look at me, Santiago Gomez, I think I am getting better at this.

@@ -1,0 +1,10 @@
+debug/main.o
+debug/homepage.o
+debug/recipe_editor.o
+debug/searchpage.o
+debug/viewrecipe.o
+debug/qrc_Resources.o
+debug/moc_homepage.o
+debug/moc_recipe_editor.o
+debug/moc_searchpage.o
+debug/moc_viewrecipe.o

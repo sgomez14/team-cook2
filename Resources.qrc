@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>icons/leftArrow.png</file>
+        <file>icons/logo.png</file>
+        <file>icons/Logo2.png</file>
+        <file>icons/logo3.png</file>
+        <file>icons/magnifier.png</file>
+        <file>icons/rightArrow.png</file>
+        <file>icons/save.png</file>
+        <file>img/spices.jpg</file>
+    </qresource>
+</RCC>
