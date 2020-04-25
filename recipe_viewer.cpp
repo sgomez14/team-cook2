@@ -39,6 +39,7 @@ void Recipe_Viewer::setIndex(int index){
     cout << "Recipe Index set" << endl;
 }
 
+
 int Recipe_Viewer::getIndex(){
     return recipeIndex;
 }
@@ -162,4 +163,5 @@ void Recipe_Viewer::on_editRecipeButton_clicked()
     //editorPage->setAttribute(Qt::WA_DeleteOnClose);
     editorPage->show();
     this->close();
+
 }

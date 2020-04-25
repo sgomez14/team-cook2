@@ -46,6 +46,7 @@ HomePage::HomePage(QWidget *parent)
 
 
 
+
         int count = ui->recipeList->count();
 
         for (int i= 0; i <count; i++){

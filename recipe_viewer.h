@@ -41,13 +41,14 @@ public:
 
     void setIndex(int index);
 
+
     int getIndex();
 
     void displayRecipe(int index);
 
+    void displayRecipe(int index);
 
 private slots:
-   // void on_uploadPhoto_clicked();
 
     void on_nextRecipeButton_clicked();
 
@@ -61,8 +62,6 @@ private:
 signals:
     void nextPage(int index);
 
-/*public slots:
-    void setIndex(int index);*/
 
 };
 
