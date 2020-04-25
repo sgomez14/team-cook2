@@ -49,7 +49,7 @@ HomePage::HomePage(QWidget *parent)
      cout << cookbook.size() << endl;
 
     for (int i=0; i < cookbook.size() ; i++) {
-        ui->recipeList->addItem(new QListWidgetItem(QString::fromStdString((cookbook)[i].getName()),1000));
+        ui->recipeList->addItem(new QListWidgetItem(QString::fromStdString((cookbook)[i].getName())));
         cout << test << endl;
     }
 
