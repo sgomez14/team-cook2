@@ -13,6 +13,7 @@
 #include <QString>
 #include "recipe_viewer.h"
 #include <iostream>
+#include <QIcon>
 
 using namespace std;
 string test = "test";
@@ -49,7 +50,7 @@ HomePage::HomePage(QWidget *parent)
      cout << cookbook.size() << endl;
 
     for (int i=0; i < cookbook.size() ; i++) {
-        ui->recipeList->addItem(new QListWidgetItem(QString::fromStdString((cookbook)[i].getName())));
+        ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/icons/logo3.png"), QString::fromStdString((cookbook)[i].getName())));
         cout << test << endl;
     }
 
@@ -75,7 +76,7 @@ void HomePage::on_addRecipeButton_clicked()
 void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 {
 
-    cout << item->type() <<endl;
+    cout << ui->recipeList->currentRow() <<endl;
     /*Recipe_Viewer *recipe = new Recipe_Viewer();
     recipe->show();
     this->close();*/
