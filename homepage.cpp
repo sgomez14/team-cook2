@@ -13,6 +13,9 @@
 #include <QString>
 #include "recipe_viewer.h"
 #include <iostream>
+#include <QIcon>
+#include <QObject>
+
 
 using namespace std;
 string test = "test";
@@ -73,8 +76,18 @@ void HomePage::on_addRecipeButton_clicked()
 void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 {
 
+
+    cout << ui->recipeList->currentRow() <<endl;
+    int index = ui->recipeList->currentRow();
+    Recipe_Viewer *recipe = new Recipe_Viewer();
+
+    QObject::connect(this, SIGNAL(sendIndex(index)), recipe, SLOT(setIndex(index)));
+
+    recipe->setIndex(index);
+
     cout << item->type() <<endl;
     /*Recipe_Viewer *recipe = new Recipe_Viewer();
+
     recipe->show();
-    this->close();*/
+    this->close();
 }

@@ -5,6 +5,15 @@
 #include <QString>
 #include <QFileDialog>
 #include <QMessageBox>
+#include "recipe.h"
+#include "cookbookFunctions.h"
+#include <vector>
+#include <iostream>
+#include <QString>
+#include "recipe_editor.h"
+#include "homepage.h"
+
+using namespace std;
 
 Recipe_Viewer::Recipe_Viewer(QWidget *parent) :
     QMainWindow(parent),
@@ -12,11 +21,23 @@ Recipe_Viewer::Recipe_Viewer(QWidget *parent) :
 
 {
     ui->setupUi(this);
+
+    vector<recipe> cookbook;
+
+    load(cookbook);
+
+    cout << "Viewer Index: " << recipeIndex << endl;
+
 }
 
 Recipe_Viewer::~Recipe_Viewer()
 {
     delete ui;
+}
+
+void Recipe_Viewer::setIndex(int index){
+
+    recipeIndex = index;
 }
 
 /*

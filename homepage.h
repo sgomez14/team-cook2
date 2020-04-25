@@ -39,5 +39,10 @@ private slots:
 
 private:
     Ui::HomePage *ui;
+
+signals:
+    void sendIndex(int index);
+
 };
+
 #endif // HOMEPAGE_H
