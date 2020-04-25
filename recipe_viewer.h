@@ -2,6 +2,8 @@
 #define RECIPE_VIEWER_H
 
 #include <QMainWindow>
+#include "recipe.h"
+#include <vector>
 
 /*
     Desired Functionality:
@@ -38,6 +40,8 @@ public:
     int recipeIndex;
 
     void setIndex(int index);
+
+    void displayRecipe(int index);
 
 private slots:
    // void on_uploadPhoto_clicked();

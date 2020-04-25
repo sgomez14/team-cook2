@@ -83,17 +83,20 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 
     cout << ui->recipeList->currentRow() <<endl;
     int index = ui->recipeList->currentRow();
-    Recipe_Viewer *recipe = new Recipe_Viewer();
+    Recipe_Viewer *viewRecipe = new Recipe_Viewer();
 
-    //QObject::connect(this, SIGNAL(sendIndex()), recipe, ///SLOT(setIndex(index)));
 
-    //this->sendIndex(index);
+    vector<recipe> cookbook;
 
-    recipe->setIndex(index);
+    load(cookbook);
 
-    //cout << item->type() <<endl;
-    //Recipe_Viewer *recipe = new Recipe_Viewer();
+    viewRecipe->setIndex(index);
 
-    recipe->show();
+    viewRecipe->displayRecipe(index);
+
+    cout << "Calling recipe index: " << viewRecipe->recipeIndex << endl;
+
+
+    viewRecipe->show();
     this->close();
 }

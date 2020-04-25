@@ -22,11 +22,7 @@ Recipe_Viewer::Recipe_Viewer(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    vector<recipe> cookbook;
 
-    load(cookbook);
-
-    cout << "Viewer Index: " << recipeIndex << endl;
 
 }
 
@@ -38,6 +34,33 @@ Recipe_Viewer::~Recipe_Viewer()
 void Recipe_Viewer::setIndex(int index){
 
     recipeIndex = index;
+
+    cout << "Recipe Index set" << endl;
+}
+
+void Recipe_Viewer::displayRecipe(int index){
+
+    recipeIndex = index;
+
+    vector<recipe> cookbook;
+
+    load(cookbook);
+
+    QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
+
+    cout <<"Recipe Name: " <<  cookbook[recipeIndex].getName() << endl;
+
+
+    QString ingredients = QString::fromStdString(cookbook[recipeIndex].returnConcatStringIngredients());
+
+    QString instructions = QString::fromStdString(cookbook[recipeIndex].returnConcatStringSteps());
+
+    QString equipment = QString::fromStdString(cookbook[recipeIndex].returnConcatStringEquipment());
+
+    ui->recipeNameText->setText(recipeName);
+    ui->ingredientsText->setText(ingredients);
+    ui->instructionsText->setText(instructions);
+    ui->equipmentText->setText(equipment);
 }
 
 /*
