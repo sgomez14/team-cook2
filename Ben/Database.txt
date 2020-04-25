@@ -1,4 +1,0 @@
-"Coffee" 2 Water 
-"Apple Pie" "buy_it" "Lots_of_steps"
-Pie buy_it "No_Steps"
-Pie buy_it Lots_of_steps

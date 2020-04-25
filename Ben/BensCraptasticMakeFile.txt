@@ -1,1 +1,0 @@
-g++ cookbookMain.cpp initialisation.cpp recipe.cpp ui.cpp
