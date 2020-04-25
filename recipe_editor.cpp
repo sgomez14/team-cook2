@@ -25,6 +25,30 @@ Recipe_Editor::~Recipe_Editor()
 {
     delete ui;
 }
+void Recipe_Editor::displayRecipe(int index){
+
+    int recipeIndex = index;
+
+    vector<recipe> cookbook;
+
+    load(cookbook);
+
+    QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
+
+    cout <<"Recipe Name: " <<  cookbook[recipeIndex].getName() << endl;
+
+
+    QString ingredients = QString::fromStdString(cookbook[recipeIndex].returnConcatStringIngredients());
+
+    QString instructions = QString::fromStdString(cookbook[recipeIndex].returnConcatStringSteps());
+
+    QString equipment = QString::fromStdString(cookbook[recipeIndex].returnConcatStringEquipment());
+
+    ui->recipeNameText->setText(recipeName);
+    ui->ingredientsText->setText(ingredients);
+    ui->instructionsText->setText(instructions);
+    ui->equipmentText->setText(equipment);
+}
 
 /*
 void Recipe_Editor::on_uploadPhoto_clicked()

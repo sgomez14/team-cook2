@@ -13,6 +13,9 @@
 #include <QString>
 #include "recipe_viewer.h"
 #include <iostream>
+#include <QIcon>
+#include <QObject>
+
 
 using namespace std;
 string test = "test";
@@ -25,18 +28,6 @@ HomePage::HomePage(QWidget *parent)
 {
     ui->setupUi(this);
 
-    initialise();
-
-    /*QFile recipeData("C:/Users/santi09/Google Drive/Coding/327/team-cook/build-Cookbook-Desktop_Qt_5_14_2_MinGW_64_bit-Debug/dataToUpload.txt");
-
-    if (recipeData.open(QFile::ReadOnly | QFile::Text)){
-        //QMessageBox::warning(this, "recipe file not open");
-        cout << "recipe did not open";
-    }*/
-
-    //QTextStream readIn(&recipeData);
-
-    //QString saveWord;
 
     vector<recipe> cookbook;
 
@@ -48,7 +39,23 @@ HomePage::HomePage(QWidget *parent)
 
 
     for (int i=0; i < cookbook.size() ; i++) {
-        ui->recipeList->addItem(new QListWidgetItem(QString::fromStdString((cookbook)[i].getName())));
+
+        cout << "Reading in new recipe" << endl;
+
+        ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/img/spices.jpg"), QString::fromStdString((cookbook)[i].getName())));
+
+
+
+        int count = ui->recipeList->count();
+
+        for (int i= 0; i <count; i++){
+            QListWidgetItem *item = ui->recipeList->item(i);
+            item->setSizeHint(QSize(item->sizeHint().width(), 100));
+        }
+        ui->recipeList->setIconSize(QSize(100,100));
+        ui->recipeList->setStyleSheet("font: 25pt");
+
+
     }
 
 
@@ -73,8 +80,23 @@ void HomePage::on_addRecipeButton_clicked()
 void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 {
 
-    cout << item->type() <<endl;
-    /*Recipe_Viewer *recipe = new Recipe_Viewer();
-    recipe->show();
-    this->close();*/
+
+    cout << ui->recipeList->currentRow() <<endl;
+    int index = ui->recipeList->currentRow();
+    Recipe_Viewer *viewRecipe = new Recipe_Viewer();
+
+
+    vector<recipe> cookbook;
+
+    load(cookbook);
+
+    viewRecipe->setIndex(index);
+
+    viewRecipe->displayRecipe(index);
+
+    cout << "Calling recipe index: " << viewRecipe->recipeIndex << endl;
+
+
+    viewRecipe->show();
+    this->close();
 }

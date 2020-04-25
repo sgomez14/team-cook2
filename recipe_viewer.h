@@ -2,6 +2,8 @@
 #define RECIPE_VIEWER_H
 
 #include <QMainWindow>
+#include "recipe.h"
+#include <vector>
 
 /*
     Desired Functionality:
@@ -35,11 +37,33 @@ public:
     explicit Recipe_Viewer(QWidget *parent = nullptr);
     ~Recipe_Viewer();
 
+    int recipeIndex;
+
+    void setIndex(int index);
+
+    int getIndex();
+
+    void displayRecipe(int index);
+
+
 private slots:
    // void on_uploadPhoto_clicked();
 
+    void on_nextRecipeButton_clicked();
+
+    void on_previousRecipeButton_clicked();
+
+    void on_editRecipeButton_clicked();
+
 private:
     Ui::Recipe_Viewer *ui;
+
+signals:
+    void nextPage(int index);
+
+/*public slots:
+    void setIndex(int index);*/
+
 };
 
 #endif // RECIPE_VIEWER_H
