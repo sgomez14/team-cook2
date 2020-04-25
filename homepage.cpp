@@ -51,7 +51,18 @@ HomePage::HomePage(QWidget *parent)
 
 
     for (int i=0; i < cookbook.size() ; i++) {
-        ui->recipeList->addItem(new QListWidgetItem(QString::fromStdString((cookbook)[i].getName())));
+        ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/icons/logo3.png"), QString::fromStdString((cookbook)[i].getName())));
+
+        int count = ui->recipeList->count();
+
+        for (int i= 0; i <count; i++){
+            QListWidgetItem *item = ui->recipeList->item(i);
+            item->setSizeHint(QSize(item->sizeHint().width(), 100));
+        }
+        ui->recipeList->setIconSize(QSize(100,100));
+        ui->recipeList->setStyleSheet("font: 50pt");
+
+
     }
 
 
@@ -81,12 +92,14 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
     int index = ui->recipeList->currentRow();
     Recipe_Viewer *recipe = new Recipe_Viewer();
 
-    QObject::connect(this, SIGNAL(sendIndex(index)), recipe, SLOT(setIndex(index)));
+    QObject::connect(this, SIGNAL(sendIndex()), recipe, SLOT(setIndex(index)));
 
-    recipe->setIndex(index);
+    this->sendIndex(index);
 
-    cout << item->type() <<endl;
-    /*Recipe_Viewer *recipe = new Recipe_Viewer();
+    //recipe->setIndex(index);
+
+    //cout << item->type() <<endl;
+    //Recipe_Viewer *recipe = new Recipe_Viewer();
 
     recipe->show();
     this->close();
