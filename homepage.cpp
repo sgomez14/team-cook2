@@ -61,13 +61,13 @@ HomePage::HomePage(QWidget *parent)
     for (int i=0; i < cookbook.size() ; i++) {
         ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/icons/logo3.png"), QString::fromStdString((cookbook)[i].getName())));
         int count = ui->recipeList->count();
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < count; i++) //increase size of row
         {
           QListWidgetItem *item = ui->recipeList->item(i);
           item->setSizeHint(QSize(item->sizeHint().width(), 100));
         }
-        ui->recipeList->setIconSize(QSize(100,100));
-        ui->recipeList->setStyleSheet("font: 50pt");
+        ui->recipeList->setIconSize(QSize(100,100)); //changing size of icon
+        ui->recipeList->setStyleSheet("font: 50pt"); //changing text size
         cout << test << endl;
     }
 
