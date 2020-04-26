@@ -36,7 +36,7 @@ void load(vector<recipe> &cookbook){
     vector<string> ingredients;
     vector<string> steps;
     vector<string> equipment;
-    string line, name, ingredientString, stepString, equipmentString, dump;
+    string line, name, ingredientString, stepString, equipmentString, imageAddress, dump;
     //input.open("C:/Users/santi09/Google Drive/Coding/327/team-cook/build-Cookbook-Desktop_Qt_5_14_2_MinGW_64_bit-Debug/dataToUpload.txt");
 
     input.open(path);
@@ -50,7 +50,7 @@ void load(vector<recipe> &cookbook){
 
     //Takes elements of a single line and loads them into corresponding arrays. For some reasons outputs a new line for all entires after the first. Issue is the previous line contains a "new line" character, and the name of the next line contains that. Causes the print command to print a new line before name. First input in while loop acts as a buffer, catching this endl.
     //Make into permanent heap based;
-    while (getline(input,dump,'|'),getline(input,name,'|'), getline(input, ingredientString, '|'), getline(input, stepString, '|'), getline(input, equipmentString, '|')){
+    while (getline(input,dump,'|'),getline(input,name,'|'), getline(input, ingredientString, '|'), getline(input, stepString, '|'), getline(input, equipmentString, '|'),getline(input, imageAddress, '|')){
         stringstream ingWorking(ingredientString);
         stringstream stepWorking(stepString);
         stringstream equipmentWorking(equipmentString);
@@ -69,7 +69,7 @@ void load(vector<recipe> &cookbook){
             getline(equipmentWorking,subEquipment,'^');
             equipment.push_back(subEquipment);
         }
-        recipe upload(name,ingredients,steps,equipment);
+        recipe upload(name,ingredients,steps,equipment,imageAddress);
         cookbook.push_back(upload);
         ingredients.clear();
         steps.clear();
@@ -77,7 +77,7 @@ void load(vector<recipe> &cookbook){
     }
 }
 
-void WriteRecipe(string name,string steps,string ingredients, string equipment){                  //Add a concat string function to return a long string with spacing and new lines.
+void WriteRecipe(string name,string steps,string ingredients, string equipment,string imageAddress){                  //Add a concat string function to return a long string with spacing and new lines.
     //cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');     //Flushes cin buffer.
     /*string name, steps, ingredients,equipment;
     //cout << "Enter recipe name: ";
@@ -97,7 +97,7 @@ void WriteRecipe(string name,string steps,string ingredients, string equipment){
     cout << steps << endl;
 
     ofstream file(path, ios::app);
-    string data("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|");
+    string data("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|" + imageAddress + "|");
     file << endl << data << endl;
     file.close();
 

@@ -29,7 +29,7 @@ class recipe{
         //Constructors
         recipe();
 
-        recipe(string n, vector<string> i, vector<string> s, vector<string> e);
+        recipe(string n, vector<string> i, vector<string> s, vector<string> e, string imageAddress);
 
         //Deconstructor
         //~recipe();          //Do we need to deconstruct vectors?

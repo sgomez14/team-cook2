@@ -106,7 +106,9 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
         QString equipment = ui->equipmentText->toPlainText();
 
-        WriteRecipe(recipeName.toStdString(),instructions.toStdString(),    ingredients.toStdString(), equipment.toStdString());
+        QString imageAddress = ":/resources/img/spices.jpg|";       //USES DEFAULT LOCATION ATM
+
+        WriteRecipe(recipeName.toStdString(),instructions.toStdString(),    ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
        }
 
 
