@@ -37,6 +37,8 @@ private slots:
 
     void on_recipeList_itemClicked(QListWidgetItem *item);
 
+    void on_actionNew_Recipe_triggered();
+
 private:
     Ui::HomePage *ui;
 

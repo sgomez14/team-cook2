@@ -40,10 +40,9 @@ HomePage::HomePage(QWidget *parent)
 
     for (int i=0; i < cookbook.size() ; i++) {
 
-        //cout << "Reading in new recipe" << endl;
+        cout << "Reading in new recipe" << endl;
 
         ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/img/spices.jpg"), QString::fromStdString((cookbook)[i].getName())));
-
 
 
 
@@ -99,5 +98,14 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 
 
     viewRecipe->show();
+    this->close();
+}
+
+
+void HomePage::on_actionNew_Recipe_triggered()
+{
+    Recipe_Editor *editorPage = new Recipe_Editor();
+    editorPage->setAttribute(Qt::WA_DeleteOnClose);
+    editorPage->show();
     this->close();
 }

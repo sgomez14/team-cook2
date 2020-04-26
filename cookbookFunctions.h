@@ -4,7 +4,7 @@
 #include <chrono>
 #include <thread>
 #include <time.h>
-//#include <unistd.h>
+#include <unistd.h>
 #include "recipe.h"
 #include <cctype>
 #include <vector>
@@ -22,8 +22,6 @@ void initialise();
 void load(vector<recipe> &temp);
 
 void EditRecipe(vector<recipe> &input);
-
-vector<int> searchIndices(string input, vector<recipe> reference);
 
 void vectorDump(vector<recipe> &input);
 
