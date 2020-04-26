@@ -308,6 +308,11 @@
         <property name="text">
          <string>Cancel</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normalon>:/resources/icons/close.png</normalon>
+         </iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -342,6 +347,11 @@
         <property name="text">
          <string>Save Recipe</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normalon>:/resources/icons/save.png</normalon>
+         </iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -373,8 +383,44 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionHome"/>
+    <addaction name="actionSearch"/>
+    <addaction name="actionCancel"/>
+   </widget>
+   <addaction name="menuMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionHome">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/Home1.png</normaloff>:/resources/icons/Home1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Home</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/magnifier.png</normaloff>:/resources/icons/magnifier.png</iconset>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+  </action>
+  <action name="actionCancel">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/close.png</normaloff>:/resources/icons/close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>recipeNameText</tabstop>
@@ -385,6 +431,8 @@
   <tabstop>cancelButton</tabstop>
   <tabstop>saveRecipeButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

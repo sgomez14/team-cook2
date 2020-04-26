@@ -118,3 +118,11 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
 
 }
+
+void Recipe_Editor::on_cancelButton_clicked()
+{
+    HomePage*  home = new HomePage();
+    home->setAttribute(Qt::WA_DeleteOnClose);
+    home->show();
+    this->close();
+}
