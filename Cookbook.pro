@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cookbookFunctions.cpp \
+    loadingpage.cpp \
     main.cpp \
     homepage.cpp \
     recipe.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     cookbookFunctions.h \
     homepage.h \
+    loadingpage.h \
     recipe.h \
     recipe_editor.h \
     recipe_viewer.h \
@@ -34,6 +36,7 @@ HEADERS += \
 
 FORMS += \
     homepage.ui \
+    loadingpage.ui \
     recipe_editor.ui \
     recipe_viewer.ui \
     searchpage.ui
