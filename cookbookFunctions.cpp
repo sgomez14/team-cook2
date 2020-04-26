@@ -50,7 +50,7 @@ void load(vector<recipe> &cookbook){
 
     //Takes elements of a single line and loads them into corresponding arrays. For some reasons outputs a new line for all entires after the first. Issue is the previous line contains a "new line" character, and the name of the next line contains that. Causes the print command to print a new line before name. First input in while loop acts as a buffer, catching this endl.
     //Make into permanent heap based;
-    while (getline(input,dump,'|'),getline(input,name,'|'), getline(input, ingredientString, '|'), getline(input, stepString, '|'), getline(input, equipmentString, '|'),getline(input, imageAddress, '|')){
+    while (getline(input,dump,'|'),getline(input,name,'|'), getline(input, ingredientString, '|'), getline(input, stepString, '|'), getline(input, equipmentString, '|'), getline(input, imageAddress, '|')){
         stringstream ingWorking(ingredientString);
         stringstream stepWorking(stepString);
         stringstream equipmentWorking(equipmentString);
@@ -94,10 +94,8 @@ void WriteRecipe(string name,string steps,string ingredients, string equipment,s
     ingredients = ReplaceAll(ingredients,string("\n"),string("^"));
     equipment = ReplaceAll(equipment, string("\n"),string("^"));
 
-    cout << steps << endl;
-
     ofstream file(path, ios::app);
-    string data("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|" + imageAddress + "|");
+    string data("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|" + imageAddress );
     file << endl << data << endl;
     file.close();
 
@@ -198,7 +196,7 @@ vector<int> searchIndices(string input, vector<recipe> reference){              
     vector<int> output;
     for (int i = 0; i < reference.size();i++){
         if (reference[i].recipe::getName().find(input) != string::npos){
-            cout << "|NAME MATCH|";
+            //cout << "|NAME MATCH|";
             output.push_back(i);
         }
         else{
@@ -218,7 +216,8 @@ void vectorDump(vector<recipe> &input){
         return;
     }
     for (int i = 0; i< input.size();i++){
-        string name,ingredients,steps,equipment;
+        string name,ingredients,steps,equipment, imageAddress;
+        imageAddress = input[i].getImageAddress();
         name = input[i].getName();
         for (int j = 0; j < input[i].recipe::getIngredientsVectorSize();j++){
             if (ingredients.empty()){
@@ -246,7 +245,7 @@ void vectorDump(vector<recipe> &input){
                 equipment = equipment + "^" + input[i].recipe::getEquipment(x) ;
             }
         }
-        string line("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|");
+        string line("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|" + imageAddress + "|");
         inputTemp << line << endl;
     }
     inputTemp.close();
