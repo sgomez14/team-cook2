@@ -26,9 +26,6 @@ border : 2px solid gray;
 padding: 1px;
 border-radius : 8px;
 height : 20px;
-
-
-
 }
 
 QLabel {
@@ -42,6 +39,7 @@ border : 2px solid gray;
 border-radius : 8px;
 height : 20px;
 }
+
 
 
 

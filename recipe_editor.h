@@ -25,16 +25,21 @@ public:
         openedFromViewer = true;
     }
 
-    QString imgPath;
+    //location in app where the reipce image will be saved
+    QString recipeImagePath;
+
+    //original location on user's computer
+    QString userImagePath = "";
 
 private slots:
-   // void on_uploadPhoto_clicked();
 
     void on_saveRecipeButton_clicked();
 
     void on_cancelButton_clicked();
 
     void on_uploadButton_clicked();
+
+    void on_actionHome_triggered();
 
 private:
     Ui::Recipe_Editor *ui;

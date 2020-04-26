@@ -19,5 +19,7 @@
         <file>icons/edit.png</file>
         <file>icons/Meno2.png</file>
         <file>icons/menu1.png</file>
+        <file>icons/saveYellow.png</file>
+        <file>icons/upload.png</file>
     </qresource>
 </RCC>

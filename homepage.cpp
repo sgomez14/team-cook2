@@ -42,7 +42,9 @@ HomePage::HomePage(QWidget *parent)
 
         cout << "Reading in new recipe" << endl;
 
-        ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/img/spices.jpg"), QString::fromStdString((cookbook)[i].getName())));
+        cout << "Recipe Image " << cookbook[i].getImageAddress() << endl;
+
+        ui->recipeList->addItem(new QListWidgetItem(QIcon(QString::fromStdString(cookbook[i].getImageAddress())), QString::fromStdString((cookbook)[i].getName())));
 
 
 

@@ -9,6 +9,7 @@
 #include "cookbookFunctions.h"
 #include <QString>
 #include "homepage.h"
+#include <QFileInfo>
 
 Recipe_Editor::Recipe_Editor(QWidget *parent) :
     QMainWindow(parent),
@@ -106,10 +107,38 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
         QString equipment = ui->equipmentText->toPlainText();
 
-        QString imageAddress = ":/resources/img/spices.jpg|";       //USES DEFAULT LOCATION ATM
+        QString imageAddress;
 
-        WriteRecipe(recipeName.toStdString(),instructions.toStdString(),    ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
+        if (!userImagePath.isEmpty()){
+
+            QDir currentDir;
+
+
+            QString current = QString(currentDir.currentPath());
+
+            QFileInfo fileInfo(userImagePath);
+
+            recipeImagePath = current + "/recipePictures/" + fileInfo.fileName();
+
+            if (QFile(recipeImagePath).exists() != true){
+
+                QFile::copy(userImagePath, recipeImagePath);
+            }
+
+            imageAddress = recipeImagePath;
+
+          }
+        else{
+
+            imageAddress = ":/resources/img/spices.jpg"; //default recipe image
+        }
+
+
+        WriteRecipe(recipeName.toStdString(),instructions.toStdString(), ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
        }
+
+
+
 
 
     HomePage*  home = new HomePage();
@@ -131,18 +160,18 @@ void Recipe_Editor::on_cancelButton_clicked()
 
 void Recipe_Editor::on_uploadButton_clicked()
 {
-    QString imagefilename = QFileDialog::getOpenFileName(this, tr("Choose")," ", tr("Images (*.png *.jpg *.jpeg *bmp *.gif)"));
+    userImagePath = QFileDialog::getOpenFileName(this, tr("Choose")," ", tr("Images (*.png *.jpg *.jpeg *bmp *.gif)"));
 
     QImage image;
 
-    if (QString::compare(imagefilename, QString()) != 0)
+    if (QString::compare(userImagePath, QString()) != 0)
     {
 
-        bool valid = image.load(imagefilename);
+        bool valid = image.load(userImagePath);
 
         if(valid)
         {
-             QImage scaledImage = image.scaledToWidth(ui->photoLabel->width(),Qt::SmoothTransformation);
+             QImage scaledImage = image.scaledToHeight(ui->photoLabel->width(),Qt::SmoothTransformation);
             ui->photoLabel->setPixmap(QPixmap::fromImage(scaledImage));
         }
         else
@@ -151,4 +180,22 @@ void Recipe_Editor::on_uploadButton_clicked()
             //need to configure message box to say that image didn't save properly
         }
     }
+
+
+
+
+
+}
+
+void Recipe_Editor::on_actionHome_triggered()
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Home","Are you sure you want to exit without saving?",QMessageBox::Yes|QMessageBox::No);
+    if(reply == QMessageBox::Yes){
+        HomePage*  home = new HomePage();
+        home->setAttribute(Qt::WA_DeleteOnClose);
+        home->show();
+        this->close();
+    }
+
 }
