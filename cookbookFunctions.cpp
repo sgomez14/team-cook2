@@ -37,7 +37,7 @@ void load(vector<recipe> &cookbook){
     vector<string> steps;
     vector<string> equipment;
     string line, name, ingredientString, stepString, equipmentString, imageAddress, dump;
-    //input.open("C:/Users/santi09/Google Drive/Coding/327/team-cook/build-Cookbook-Desktop_Qt_5_14_2_MinGW_64_bit-Debug/dataToUpload.txt");
+
 
     input.open(path);
 
