@@ -142,12 +142,13 @@ void Recipe_Editor::on_uploadButton_clicked()
 
         if(valid)
         {
-            image = image.scaledToWidth(ui->photoLabel->width(),Qt::SmoothTransformation);
-            ui->photoLabel->setPixmap(QPixmap::fromImage(image));
+             QImage scaledImage = image.scaledToWidth(ui->photoLabel->width(),Qt::SmoothTransformation);
+            ui->photoLabel->setPixmap(QPixmap::fromImage(scaledImage));
         }
         else
         {
             //error handling
+            //need to configure message box to say that image didn't save properly
         }
     }
 }
