@@ -29,6 +29,8 @@ private slots:
 
     void on_saveRecipeButton_clicked();
 
+    void on_cancelButton_clicked();
+
 private:
     Ui::Recipe_Editor *ui;
 };
