@@ -185,24 +185,36 @@ void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIng
 }
 
 //Below code based on replacAll by Gauthier Boaglio on Stack Overflow https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string
-std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
-    size_t start_pos = 0;
-    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
-        str.replace(start_pos, from.length(), to);
-        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
+string ReplaceAll(string inputString, const string& oldText, const string& newText) {
+    size_t start = 0;
+    while((start = inputString.find(oldText, start)) != std::string::npos) {
+        inputString.replace(start, oldText.length(), newText);
+        start += newText.length(); // Handles case where 'to' is a substring of 'from'
     }
-    return str;
+    return inputString;
 }
-
-
-//string ReplaceAll(string str, const string& oldText, const string& newText) {
-//    size_t start = 0;
-//    while((start = str.find(oldText, start)) != std::string::npos) {
-//        str.replace(start, oldText.length(), newText);
-//        start += newText.length(); // Handles case where 'to' is a substring of 'from'
+//std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+//    size_t start_pos = 0;
+//    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+//        str.replace(start_pos, from.length(), to);
+//        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
 //    }
 //    return str;
 //}
+
+vector<int> searchIndices(string input, vector<recipe> reference){                          //Accepts an input reference cookbook and makes a vector containing just the indices if there's a match. Very light weight relative to tossing vectors.
+    vector<int> output;
+    for (int i = 0; i < reference.size();i++){
+        if (reference[i].recipe::getName().find(input) != string::npos){
+            cout << "|NAME MATCH|";
+            output.push_back(i);
+        }
+        else{
+            NULL;
+        }
+    }
+    return output;
+}
 
 //Outputs the current vector to a textfile and overwrites old one.
 void vectorDump(vector<recipe> &input){

@@ -23,6 +23,8 @@ void load(vector<recipe> &temp);
 
 void EditRecipe(vector<recipe> &input);
 
+vector<int> searchIndices(string input, vector<recipe> reference);
+
 void vectorDump(vector<recipe> &input);
 
 string ReplaceAll(string str, const string& oldText, const string& newText);
