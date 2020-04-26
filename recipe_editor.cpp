@@ -10,6 +10,7 @@
 #include <QString>
 #include "homepage.h"
 #include <QFileInfo>
+#include "searchpage.h"
 
 Recipe_Editor::Recipe_Editor(QWidget *parent) :
     QMainWindow(parent),
@@ -53,46 +54,7 @@ void Recipe_Editor::displayRecipe(int index){
     ui->equipmentText->setText(equipment);
 }
 
-/*
-void Recipe_Editor::on_uploadPhoto_clicked()
-{
-    QString filename = QFileDialog::getOpenFileName(this, tr("Choose")," ", tr("Images (*.png *.jpg *.jpeg *bmp *.gif)"));
 
-    QImage image;
-
-    if (QString::compare(filename, QString()) != 0)
-    {
-
-        bool valid = image.load(filename);
-
-        if(valid)
-        {
-            image = image.scaledToWidth(ui->img->width(),Qt::SmoothTransformation);
-            ui->img->setPixmap(QPixmap::fromImage(image));
-        }
-        else
-        {
-            //error handling
-        }
-    }
-
-    QDir currentDir;
-
-    QString  imagePath = QFileDialog::getSaveFileName(this, tr("Save File"), tr("JPEG (*.jpg *.jpeg); PNG (*.png)"));
-
-    //QMessageBox::information(this,"", currentDir.currentPath());
-
-    if (image.save(imagePath))
-    {
-        QMessageBox::information(this,"", "The file saved");
-    }
-    else
-    {
-        QMessageBox::warning(this,"", "The file didn't save");
-    }
-
-
-}*/
 
 void Recipe_Editor::on_saveRecipeButton_clicked()
 {
@@ -198,4 +160,22 @@ void Recipe_Editor::on_actionHome_triggered()
         this->close();
     }
 
+}
+
+void Recipe_Editor::on_actionSave_Recipe_triggered()
+{
+    Recipe_Editor::on_saveRecipeButton_clicked();
+}
+
+void Recipe_Editor::on_actionCancel_triggered()
+{
+    Recipe_Editor::on_cancelButton_clicked();
+}
+
+void Recipe_Editor::on_actionSearch_triggered()
+{
+    SearchPage*  searchpage = new SearchPage();
+    searchpage->setAttribute(Qt::WA_DeleteOnClose);
+    searchpage->show();
+    this->close();
 }

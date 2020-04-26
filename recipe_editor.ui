@@ -252,6 +252,17 @@
           <property name="text">
            <string>Upload Photo</string>
           </property>
+          <property name="icon">
+           <iconset>
+            <normalon>:/resources/icons/upload.png</normalon>
+           </iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
@@ -390,6 +401,7 @@
     <addaction name="actionHome"/>
     <addaction name="actionSearch"/>
     <addaction name="actionCancel"/>
+    <addaction name="actionSave_Recipe"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
@@ -419,6 +431,15 @@
    </property>
    <property name="text">
     <string>Cancel</string>
+   </property>
+  </action>
+  <action name="actionSave_Recipe">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/saveYellow.png</normaloff>:/resources/icons/saveYellow.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Recipe</string>
    </property>
   </action>
  </widget>

@@ -41,6 +41,12 @@ private slots:
 
     void on_actionHome_triggered();
 
+    void on_actionSave_Recipe_triggered();
+
+    void on_actionCancel_triggered();
+
+    void on_actionSearch_triggered();
+
 private:
     Ui::Recipe_Editor *ui;
 };
