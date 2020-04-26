@@ -126,3 +126,26 @@ void Recipe_Editor::on_cancelButton_clicked()
     home->show();
     this->close();
 }
+
+void Recipe_Editor::on_uploadButton_clicked()
+{
+    QString filename = QFileDialog::getOpenFileName(this, tr("Choose")," ", tr("Images (*.png *.jpg *.jpeg *bmp *.gif)"));
+
+    QImage image;
+
+    if (QString::compare(filename, QString()) != 0)
+    {
+
+        bool valid = image.load(filename);
+
+        if(valid)
+        {
+            image = image.scaledToWidth(ui->img->width(),Qt::SmoothTransformation);
+            ui->img->setPixmap(QPixmap::fromImage(image));
+        }
+        else
+        {
+            //error handling
+        }
+    }
+}
