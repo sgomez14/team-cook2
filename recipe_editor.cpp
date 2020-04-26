@@ -25,6 +25,8 @@ Recipe_Editor::~Recipe_Editor()
 {
     delete ui;
 }
+
+
 void Recipe_Editor::displayRecipe(int index){
 
     int recipeIndex = index;
@@ -93,15 +95,20 @@ void Recipe_Editor::on_uploadPhoto_clicked()
 
 void Recipe_Editor::on_saveRecipeButton_clicked()
 {
-    QString recipeName = ui->recipeNameText->toPlainText();
 
-    QString ingredients = ui->ingredientsText->toPlainText();
+    if (openedFromViewer == false){
 
-    QString instructions = ui->instructionsText->toPlainText();
+        QString recipeName = ui->recipeNameText->toPlainText();
 
-    QString equipment = ui->equipmentText->toPlainText();
+        QString ingredients = ui->ingredientsText->toPlainText();
 
-    WriteRecipe(recipeName.toStdString(),instructions.toStdString(), ingredients.toStdString(), equipment.toStdString());
+        QString instructions = ui->instructionsText->toPlainText();
+
+        QString equipment = ui->equipmentText->toPlainText();
+
+        WriteRecipe(recipeName.toStdString(),instructions.toStdString(),    ingredients.toStdString(), equipment.toStdString());
+       }
+
 
     HomePage*  home = new HomePage();
     home->setAttribute(Qt::WA_DeleteOnClose);

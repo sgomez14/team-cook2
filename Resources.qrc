@@ -8,5 +8,6 @@
         <file>icons/rightArrow.png</file>
         <file>icons/save.png</file>
         <file>img/spices.jpg</file>
+        <file>style/style.css</file>
     </qresource>
 </RCC>
