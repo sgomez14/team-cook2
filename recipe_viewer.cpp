@@ -55,7 +55,7 @@ void Recipe_Viewer::displayRecipe(int index){
     QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
 
     cout <<"Recipe Name: " <<  cookbook[recipeIndex].getName() << endl;
-
+    cout << "Image Address: " << cookbook[recipeIndex].getImageAddress() << endl;
 
     QString ingredients = QString::fromStdString(cookbook[recipeIndex].returnConcatStringIngredients());
 

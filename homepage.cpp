@@ -40,7 +40,7 @@ HomePage::HomePage(QWidget *parent)
 
     for (int i=0; i < cookbook.size() ; i++) {
 
-        cout << "Reading in new recipe" << endl;
+        //cout << "Reading in new recipe" << endl;
 
         ui->recipeList->addItem(new QListWidgetItem(QIcon(":/resources/img/spices.jpg"), QString::fromStdString((cookbook)[i].getName())));
 
@@ -81,7 +81,7 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 {
 
 
-    cout << ui->recipeList->currentRow() <<endl;
+    //cout << ui->recipeList->currentRow() <<endl;
     int index = ui->recipeList->currentRow();
     Recipe_Viewer *viewRecipe = new Recipe_Viewer();
 
@@ -94,7 +94,7 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 
     viewRecipe->displayRecipe(index);
 
-    cout << "Calling recipe index: " << viewRecipe->recipeIndex << endl;
+    //cout << "Calling recipe index: " << viewRecipe->recipeIndex << endl;
 
 
     viewRecipe->show();
