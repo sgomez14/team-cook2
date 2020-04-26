@@ -69,66 +69,25 @@ void Recipe_Viewer::displayRecipe(int index){
     ui->equipmentText->setText(equipment);
 }
 
-/*
-void Recipe_Editor::on_uploadPhoto_clicked()
-{
-    QString filename = QFileDialog::getOpenFileName(this, tr("Choose")," ", tr("Images (*.png *.jpg *.jpeg *bmp *.gif)"));
 
-    QImage image;
-
-    if (QString::compare(filename, QString()) != 0)
-    {
-
-        bool valid = image.load(filename);
-
-        if(valid)
-        {
-            image = image.scaledToWidth(ui->img->width(),Qt::SmoothTransformation);
-            ui->img->setPixmap(QPixmap::fromImage(image));
-        }
-        else
-        {
-            //error handling
-        }
-    }
-
-    QDir currentDir;
-
-    QString  imagePath = QFileDialog::getSaveFileName(this, tr("Save File"), tr("JPEG (*.jpg *.jpeg); PNG (*.png)"));
-
-    //QMessageBox::information(this,"", currentDir.currentPath());
-
-    if (image.save(imagePath))
-    {
-        QMessageBox::information(this,"", "The file saved");
-    }
-    else
-    {
-        QMessageBox::warning(this,"", "The file didn't save");
-    }
-
-
-}*/
 
 void Recipe_Viewer::on_nextRecipeButton_clicked()
 {
 
     Recipe_Viewer *viewRecipe = new Recipe_Viewer();
+
     vector<recipe> cookbook;
-    long cursize = cookbook.size() - 1;
-    recipeIndex = getIndex();
-    if(recipeIndex == cursize){
-        setIndex(0);
+    load(cookbook);
+    int lastRecipe = cookbook.size() - 1;
+
+
+    if(recipeIndex == lastRecipe){
+        viewRecipe->displayRecipe(0);
     }
     else{
-        setIndex(recipeIndex +1);
+        viewRecipe->displayRecipe(recipeIndex + 1);
     }
 
-    viewRecipe->setIndex(recipeIndex);
-
-    load(cookbook);
-
-    viewRecipe->displayRecipe(recipeIndex);
 
     viewRecipe->show();
     this->close();
@@ -138,18 +97,16 @@ void Recipe_Viewer::on_previousRecipeButton_clicked()
 {
     Recipe_Viewer *viewRecipe = new Recipe_Viewer();
     vector<recipe> cookbook;
-    recipeIndex = getIndex();
-    if(recipeIndex == 0){
-        setIndex(cookbook.size()-1);
-    }
-    else{
-        setIndex(recipeIndex-1);
-    }
-    viewRecipe->setIndex(recipeIndex);
-
     load(cookbook);
 
-    viewRecipe->displayRecipe(recipeIndex);
+
+    if(recipeIndex == 0){
+        viewRecipe->displayRecipe(cookbook.size()-1);
+    }
+    else{
+        viewRecipe->displayRecipe(recipeIndex-1);
+    }
+
 
     viewRecipe->show();
     this->close();
@@ -160,7 +117,7 @@ void Recipe_Viewer::on_editRecipeButton_clicked()
     Recipe_Editor *editorPage = new Recipe_Editor();
     vector<recipe> cookbook;
     editorPage->displayRecipe(recipeIndex);
-    //editorPage->setAttribute(Qt::WA_DeleteOnClose);
+    editorPage->setOpenedFromViewer();
     editorPage->show();
     this->close();
 
