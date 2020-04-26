@@ -34,7 +34,63 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="mainSearchButton">
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Search</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normalon>:/resources/icons/magnifier.png</normalon>
+         </iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <widget class="QPushButton" name="addRecipeButton">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>Segoe UI</family>
@@ -44,12 +100,23 @@
       <property name="text">
        <string>Add Recipe</string>
       </property>
+      <property name="icon">
+       <iconset>
+        <normalon>:/resources/icons/plus.png</normalon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
      </widget>
     </item>
     <item>
      <widget class="QListWidget" name="recipeList">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -57,7 +124,7 @@
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>400</height>
+        <height>600</height>
        </size>
       </property>
       <property name="frameShadow">
@@ -77,7 +144,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
@@ -85,16 +152,26 @@
      <string>Menu</string>
     </property>
     <addaction name="actionNew_Recipe"/>
+    <addaction name="actionSearch"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
   <action name="actionNew_Recipe">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/resources/icons/logo.png</normaloff>:/resources/icons/logo.png</iconset>
+     <normaloff>:/resources/icons/plus.png</normaloff>:/resources/icons/plus.png</iconset>
    </property>
    <property name="text">
     <string>Add Recipe</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/magnifier.png</normaloff>:/resources/icons/magnifier.png</iconset>
+   </property>
+   <property name="text">
+    <string>Search</string>
    </property>
   </action>
  </widget>

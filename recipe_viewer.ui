@@ -346,7 +346,7 @@
     </property>
     <addaction name="actionHome"/>
     <addaction name="actionSearch"/>
-    <addaction name="actionNew_Recipe"/>
+    <addaction name="actionAdd_Recipe"/>
     <addaction name="actionEdit_this_recipe"/>
     <addaction name="separator"/>
     <addaction name="actionDelete_Recipe"/>
@@ -384,13 +384,13 @@
     <string>Search</string>
    </property>
   </action>
-  <action name="actionNew_Recipe">
+  <action name="actionAdd_Recipe">
    <property name="icon">
     <iconset resource="Resources.qrc">
      <normaloff>:/resources/icons/plus.png</normaloff>:/resources/icons/plus.png</iconset>
    </property>
    <property name="text">
-    <string>New Recipe</string>
+    <string>Add Recipe</string>
    </property>
   </action>
   <action name="actionEdit_this_recipe">
