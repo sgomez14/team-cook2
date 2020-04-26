@@ -13,6 +13,7 @@
 #include <QString>
 #include "recipe_editor.h"
 #include "homepage.h"
+#include "searchpage.h"
 
 using namespace std;
 
@@ -121,4 +122,46 @@ void Recipe_Viewer::on_editRecipeButton_clicked()
     editorPage->show();
     this->close();
 
+}
+
+void Recipe_Viewer::on_actionHome_triggered()
+{
+    HomePage*  home = new HomePage();
+    home->setAttribute(Qt::WA_DeleteOnClose);
+    home->show();
+    this->close();
+
+}
+
+void Recipe_Viewer::on_actionSearch_triggered()
+{
+
+    SearchPage*  searchpage = new SearchPage();
+    searchpage->setAttribute(Qt::WA_DeleteOnClose);
+    searchpage->show();
+    this->close();
+
+}
+
+void Recipe_Viewer::on_actionAdd_Recipe_triggered()
+{
+    Recipe_Editor *editorPage = new Recipe_Editor();
+    editorPage->setAttribute(Qt::WA_DeleteOnClose);
+    editorPage->show();
+    this->close();
+}
+
+void Recipe_Viewer::on_actionEdit_this_recipe_triggered()
+{
+    Recipe_Editor *editorPage = new Recipe_Editor();
+      vector<recipe> cookbook;
+      editorPage->displayRecipe(recipeIndex);
+      editorPage->show();
+      this->close();
+
+}
+
+void Recipe_Viewer::on_actionDelete_Recipe_triggered()
+{
+//implement after delete
 }

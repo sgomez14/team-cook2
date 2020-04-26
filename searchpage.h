@@ -31,6 +31,13 @@ public:
     explicit SearchPage(QWidget *parent = nullptr);
     ~SearchPage();
 
+private slots:
+    void on_actionHome_triggered();
+
+    void on_actionAdd_Recipe_triggered();
+
+    void on_actionCancel_triggered();
+
 private:
     Ui::SearchPage *ui;
 };
