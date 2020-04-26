@@ -12,11 +12,12 @@ using namespace std;
 
 //Recipes Class and functions
 //Constructors
-    recipe::recipe(string n, vector<string> i, vector<string> s, vector<string> e){       //Add variable for tools/equipment. And tag/keyword member. Pointer for recipe's image.
+    recipe::recipe(string n, vector<string> i, vector<string> s, vector<string> e,string imageAddress){       //Add variable for tools/equipment. And tag/keyword member. Pointer for recipe's image.
         name = n;
         ingredients = i;
         steps = s;
         equipment = e;
+        imageAddress = ":/resources/img/spices.jpg";
     }
 
 //Display

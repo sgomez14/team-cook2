@@ -11,7 +11,7 @@
 #include <sstream>
 using namespace std;
 
-void WriteRecipe(string name,string steps,string ingredients, string equipment);
+void WriteRecipe(string name,string steps,string ingredients, string equipment, string imageAddress);
 
 void DeleteRecipe(int n);
 
