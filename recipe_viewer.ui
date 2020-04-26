@@ -248,8 +248,16 @@
           <pointsize>12</pointsize>
          </font>
         </property>
-        <property name="text">
-         <string>Previous</string>
+        <property name="icon">
+         <iconset>
+          <normalon>:/resources/icons/leftArrow.png</normalon>
+         </iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -290,8 +298,16 @@
           <pointsize>12</pointsize>
          </font>
         </property>
-        <property name="text">
-         <string>Next</string>
+        <property name="icon">
+         <iconset>
+          <normalon>:/resources/icons/rightArrow.png</normalon>
+         </iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -321,7 +337,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHome">
@@ -342,11 +358,19 @@
    </property>
   </action>
   <action name="actionHome">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/logo3.png</normaloff>:/resources/icons/logo3.png</iconset>
+   </property>
    <property name="text">
     <string>Home</string>
    </property>
   </action>
   <action name="actionSearch">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/magnifier.png</normaloff>:/resources/icons/magnifier.png</iconset>
+   </property>
    <property name="text">
     <string>Search</string>
    </property>
@@ -362,6 +386,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
