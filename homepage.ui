@@ -70,24 +70,36 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
+   <widget class="QMenu" name="menuMenu">
     <property name="title">
-     <string>File</string>
+     <string>Menu</string>
     </property>
+    <addaction name="actionNew_Recipe"/>
    </widget>
-   <addaction name="menuFile"/>
+   <addaction name="menuMenu"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew_Recipe">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/logo.png</normaloff>:/resources/icons/logo.png</iconset>
+   </property>
+   <property name="text">
+    <string>New Recipe</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

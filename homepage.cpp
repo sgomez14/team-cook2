@@ -46,7 +46,6 @@ HomePage::HomePage(QWidget *parent)
 
 
 
-
         int count = ui->recipeList->count();
 
         for (int i= 0; i <count; i++){
@@ -99,5 +98,14 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 
 
     viewRecipe->show();
+    this->close();
+}
+
+
+void HomePage::on_actionNew_Recipe_triggered()
+{
+    Recipe_Editor *editorPage = new Recipe_Editor();
+    editorPage->setAttribute(Qt::WA_DeleteOnClose);
+    editorPage->show();
     this->close();
 }

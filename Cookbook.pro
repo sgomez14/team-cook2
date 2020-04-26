@@ -22,8 +22,7 @@ SOURCES += \
     recipe.cpp \
     recipe_editor.cpp \
     recipe_viewer.cpp \
-    searchpage.cpp \
-    viewrecipe.cpp
+    searchpage.cpp
 
 HEADERS += \
     cookbookFunctions.h \
@@ -31,15 +30,13 @@ HEADERS += \
     recipe.h \
     recipe_editor.h \
     recipe_viewer.h \
-    searchpage.h \
-    viewrecipe.h
+    searchpage.h
 
 FORMS += \
     homepage.ui \
     recipe_editor.ui \
     recipe_viewer.ui \
-    searchpage.ui \
-    viewrecipe.ui
+    searchpage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
