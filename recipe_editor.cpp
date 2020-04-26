@@ -131,19 +131,19 @@ void Recipe_Editor::on_cancelButton_clicked()
 
 void Recipe_Editor::on_uploadButton_clicked()
 {
-    QString filename = QFileDialog::getOpenFileName(this, tr("Choose")," ", tr("Images (*.png *.jpg *.jpeg *bmp *.gif)"));
+    QString imagefilename = QFileDialog::getOpenFileName(this, tr("Choose")," ", tr("Images (*.png *.jpg *.jpeg *bmp *.gif)"));
 
     QImage image;
 
-    if (QString::compare(filename, QString()) != 0)
+    if (QString::compare(imagefilename, QString()) != 0)
     {
 
-        bool valid = image.load(filename);
+        bool valid = image.load(imagefilename);
 
         if(valid)
         {
-            image = image.scaledToWidth(ui->img->width(),Qt::SmoothTransformation);
-            ui->img->setPixmap(QPixmap::fromImage(image));
+            image = image.scaledToWidth(ui->photoLabel->width(),Qt::SmoothTransformation);
+            ui->photoLabel->setPixmap(QPixmap::fromImage(image));
         }
         else
         {

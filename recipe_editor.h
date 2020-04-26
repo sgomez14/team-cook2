@@ -2,6 +2,7 @@
 #define RECIPE_EDITOR_H
 
 #include <QMainWindow>
+#include <QString>
 
 
 namespace Ui {
@@ -24,12 +25,16 @@ public:
         openedFromViewer = true;
     }
 
+    QString imgPath;
+
 private slots:
    // void on_uploadPhoto_clicked();
 
     void on_saveRecipeButton_clicked();
 
     void on_cancelButton_clicked();
+
+    void on_uploadButton_clicked();
 
 private:
     Ui::Recipe_Editor *ui;
