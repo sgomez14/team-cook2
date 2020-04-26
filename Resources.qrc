@@ -9,5 +9,15 @@
         <file>icons/save.png</file>
         <file>img/spices.jpg</file>
         <file>style/style.css</file>
+        <file>icons/deletearrow.png</file>
+        <file>icons/Home1.png</file>
+        <file>icons/home2.png</file>
+        <file>icons/minus.png</file>
+        <file>icons/plus.png</file>
+        <file>icons/trashCan.png</file>
+        <file>icons/close.png</file>
+        <file>icons/edit.png</file>
+        <file>icons/Meno2.png</file>
+        <file>icons/menu1.png</file>
     </qresource>
 </RCC>

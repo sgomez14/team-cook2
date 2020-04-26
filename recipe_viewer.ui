@@ -348,11 +348,20 @@
     <addaction name="actionSearch"/>
     <addaction name="actionNew_Recipe"/>
     <addaction name="actionEdit_this_recipe"/>
+    <addaction name="separator"/>
+    <addaction name="actionDelete_Recipe"/>
    </widget>
    <addaction name="menuHome"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionMenu">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/Meno2.png</normaloff>:/resources/icons/Meno2.png</iconset>
+   </property>
    <property name="text">
     <string>Menu</string>
    </property>
@@ -360,7 +369,7 @@
   <action name="actionHome">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/resources/icons/logo3.png</normaloff>:/resources/icons/logo3.png</iconset>
+     <normaloff>:/resources/icons/home2.png</normaloff>:/resources/icons/home2.png</iconset>
    </property>
    <property name="text">
     <string>Home</string>
@@ -376,13 +385,30 @@
    </property>
   </action>
   <action name="actionNew_Recipe">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/plus.png</normaloff>:/resources/icons/plus.png</iconset>
+   </property>
    <property name="text">
     <string>New Recipe</string>
    </property>
   </action>
   <action name="actionEdit_this_recipe">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/edit.png</normaloff>:/resources/icons/edit.png</iconset>
+   </property>
    <property name="text">
     <string>Edit this recipe</string>
+   </property>
+  </action>
+  <action name="actionDelete_Recipe">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/resources/icons/trashCan.png</normaloff>:/resources/icons/trashCan.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete Recipe</string>
    </property>
   </action>
  </widget>

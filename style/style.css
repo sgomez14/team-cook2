@@ -16,8 +16,28 @@ background-color: #2F363D;
 
 QTextEdit {
 background-color: #f0f0f0;
-border: 1px solid;
-padding: 10px;
+border : 2px solid gray;
+padding: 1px;
+border-radius : 8px;
+height : 20px;
+
 
 
 }
+
+QLabel {
+color: white;
+}
+
+QListWidget{
+
+background-color: #f0f0f0;
+border : 2px solid gray;
+border-radius : 8px;
+height : 20px;
+}
+
+
+
+
+
