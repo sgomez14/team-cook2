@@ -12,17 +12,17 @@ using namespace std;
 
 //Recipes Class and functions
 //Constructors
-    recipe::recipe(string n, vector<string> i, vector<string> s, vector<string> e,string imageAddress){       //Add variable for tools/equipment. And tag/keyword member. Pointer for recipe's image.
+    recipe::recipe(string n, vector<string> i, vector<string> s, vector<string> e,string iA){       //Add variable for tools/equipment. And tag/keyword member. Pointer for recipe's image.
         name = n;
         ingredients = i;
         steps = s;
         equipment = e;
-        imageAddress = ":/resources/img/spices.jpg";
+        imageAddress = iA;
     }
 
 //Display
     void recipe::display(){
-        cout << "Recipe Name: " << endl << name << endl;
+        //cout << "Recipe Name: " << endl << name << endl;
         recipe::printAllIngredients();
         recipe::printAllSteps();
         recipe::printAllEquipment();
