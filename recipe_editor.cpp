@@ -65,7 +65,7 @@ void Recipe_Editor::displayRecipe(int index){
         ui->photoLabel->setPixmap(QPixmap::fromImage(defaultPictureScaled));
     }
     else{
-        QImage scaledRecipePicture = image.scaledToHeight(ui->photoLabel->height(),Qt::SmoothTransformation);
+        QImage scaledRecipePicture = image.scaledToWidth(ui->photoLabel->width(),Qt::SmoothTransformation);
 
         ui->photoLabel->setPixmap(QPixmap::fromImage(scaledRecipePicture));
     }
@@ -189,7 +189,7 @@ void Recipe_Editor::on_uploadButton_clicked()
 
         if(valid)
         {
-             QImage scaledImage = image.scaledToHeight(ui->photoLabel->width(),Qt::SmoothTransformation);
+             QImage scaledImage = image.scaledToWidth(ui->photoLabel->width(),Qt::SmoothTransformation);
             ui->photoLabel->setPixmap(QPixmap::fromImage(scaledImage));
         }
         else
@@ -262,6 +262,7 @@ void Recipe_Editor::on_resetPhotoButton_clicked()
 {
     ui->photoLabel->clear();
     userImagePath = ":/resources/img/spices.jpg";
+    recipeImagePath = ":/resources/img/spices.jpg";
 
     QImage image;
 
