@@ -1,5 +1,8 @@
 #include "searchpage.h"
 #include "ui_searchpage.h"
+#include "recipe_viewer.h"
+#include "recipe_editor.h"
+#include "homepage.h"
 
 #include "homepage.h"
 #include "recipe_editor.h"
@@ -138,20 +141,24 @@ void SearchPage::on_searchLine_returnPressed()
 }
 
 void SearchPage::on_returnHomeButton_clicked()
+
 {
     HomePage*  home = new HomePage();
     home->setAttribute(Qt::WA_DeleteOnClose);
     home->show();
     this->close();
+
 }
 
 void SearchPage::on_addRecipeButton_clicked()
 {
+
     Recipe_Editor *editorPage = new Recipe_Editor();
     editorPage->setAttribute(Qt::WA_DeleteOnClose);
     editorPage->show();
     this->close();
 }
+
 
 void SearchPage::on_actionHome_triggered()
 {
@@ -183,5 +190,12 @@ void SearchPage::on_searchResultsList_itemClicked(QListWidgetItem *item)
     viewRecipe->displayRecipe(index);
 
     viewRecipe->show();
+
+void SearchPage::on_actionCancel_triggered()
+{
+    HomePage*  home = new HomePage();
+    home->setAttribute(Qt::WA_DeleteOnClose);
+    home->show();
+
     this->close();
 }

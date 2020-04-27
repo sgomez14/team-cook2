@@ -36,6 +36,16 @@ private slots:
 
     void on_editRecipeButton_clicked();
 
+    void on_actionHome_triggered();
+
+    void on_actionSearch_triggered();
+
+    void on_actionAdd_Recipe_triggered();
+
+    void on_actionEdit_this_recipe_triggered();
+
+    void on_actionDelete_Recipe_triggered();
+
 private:
     Ui::Recipe_Viewer *ui;
 

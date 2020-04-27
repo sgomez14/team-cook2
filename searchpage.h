@@ -17,6 +17,7 @@ public:
     explicit SearchPage(QWidget *parent = nullptr);
     ~SearchPage();
 
+
     void searchFromHome(QString searchInput);
 
 
@@ -29,11 +30,15 @@ private slots:
 
     void on_addRecipeButton_clicked();
 
+
+private slots:
+
     void on_actionHome_triggered();
 
     void on_actionAdd_Recipe_triggered();
 
     void on_actionCancel_triggered();
+
 
     void on_searchResultsList_itemClicked(QListWidgetItem *item);
 
