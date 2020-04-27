@@ -22,8 +22,6 @@ const string path=  current.toStdString() + "/database.txt";
 
 
 void initialise(){
-
-    //system("mkdir Working");
     std::ofstream file(path, ios::app);
 
 }
@@ -49,7 +47,7 @@ void load(vector<recipe> &cookbook){
     }
 
     //Takes elements of a single line and loads them into corresponding arrays. For some reasons outputs a new line for all entires after the first. Issue is the previous line contains a "new line" character, and the name of the next line contains that. Causes the print command to print a new line before name. First input in while loop acts as a buffer, catching this endl.
-    //Make into permanent heap based;
+
     while (getline(input,dump,'|'),getline(input,name,'|'), getline(input, ingredientString, '|'), getline(input, stepString, '|'), getline(input, equipmentString, '|'), getline(input, imageAddress, '|')){
         stringstream ingWorking(ingredientString);
         stringstream stepWorking(stepString);
@@ -77,19 +75,8 @@ void load(vector<recipe> &cookbook){
     }
 }
 
-void WriteRecipe(string name,string steps,string ingredients, string equipment,string imageAddress){                  //Add a concat string function to return a long string with spacing and new lines.
-    //cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');     //Flushes cin buffer.
-    /*string name, steps, ingredients,equipment;
-    //cout << "Enter recipe name: ";
-    getline(cin,name);                     //Skipping first line for some reason.
-    //cout << "Enter ingredients, seperated by a comma: ";
-    getline(cin,ingredients);
-    //cout << "Enter steps, seperated by a comma: ";
-    getline(cin , steps);
-    //cout << "Enter equipment, seperated by a comma: ";
-    getline(cin , equipment);*/
+void WriteRecipe(string name,string steps,string ingredients, string equipment,string imageAddress){
 
-    cout << "Replacing Strings" << endl;
     steps = ReplaceAll(steps, string("\n"),string("^"));
     ingredients = ReplaceAll(ingredients,string("\n"),string("^"));
     equipment = ReplaceAll(equipment, string("\n"),string("^"));
@@ -101,7 +88,7 @@ void WriteRecipe(string name,string steps,string ingredients, string equipment,s
 
 }
 
-void DeleteRecipe(int n){    //TODO: PRUNE EMPTY LINES FROM COPY
+void DeleteRecipe(int n){
     string line;
     int lineCounter = 0;
     ifstream input;
@@ -121,34 +108,18 @@ void DeleteRecipe(int n){    //TODO: PRUNE EMPTY LINES FROM COPY
     }
     inputTemp.close();
     input.close();
-    //Clearing old file
-    //remove(path);
-    //Renaming new edited file
-    //rename("temp.txt",path);
+
 }
 
 void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIngredients, string newEquipment){
-    //string newSteps, newIngredients, newEquipment;
-    //int n;
-    //cout << "Enter index number: ";
-    //cin >> n;
+
     if (index>=input.size())
     {
         cout << "Error: Input too large" << endl;
         abort();
     }
     else{
-        /*cout << "Old Steps: " << input[n].returnConcatStringSteps() << endl;
-        cout << "Old Ingedients: " << input[n].returnConcatStringIngredients() << endl;
-        cout << "Old Equipment: " << input[n].returnConcatStringEquipment() << endl;
-        cout << "______________________" << endl;
-        cout << "Enter Steps, seperated by a coma: " << endl;
-        cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');     //Flushes cin buffer.
-        getline(cin,newSteps);
-        cout << "Enter Ingredients, seperated by a coma: " << endl;
-        getline(cin,newIngredients);
-        cout << "Enter Equipment, seperated by a coma: " << endl;
-        getline(cin,newEquipment);*/
+
         cout << "Replacing Strings" << endl;
         newSteps = ReplaceAll(newSteps, "\n","^");
         newIngredients = ReplaceAll(newIngredients, "\n","^");
@@ -174,9 +145,7 @@ void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIng
             getline(equipmentWorking,subEquipment,'^');
             input[index].recipe::pushEquipment(subEquipment);
         }
-//         input[index].recipe::printAllIngredients();
-//         input[index].recipe::printAllSteps();
-//         input[index].recipe::printAllEquipment();
+
         vectorDump(input);
     }
 
@@ -249,10 +218,7 @@ void vectorDump(vector<recipe> &input){
         inputTemp << line << endl;
     }
     inputTemp.close();
-    //Clearing old file
-    //remove(path);
-    //Renaming new edited file
-    //rename("temp.txt",path);
+
 }
 
 void indexBook(vector<recipe> cookbook){
@@ -261,28 +227,3 @@ void indexBook(vector<recipe> cookbook){
     }
 }
 
-//MOVE TO RECIPE CLASS, AND MAKE DUPLICATE FOR EACH VECTOR TYPE
-/*string returnConcatStringSteps(recipe input)       //Takes an input recipe object and a selector string. The vectors inside of the input are parsed to be returned as one long strong with \n implemented for each line. Selector acts as a way of picking ingredient, equipment, or steps vector.
-{
-    string output;
-    for (int i = 0; i<input.recipe::getStepsVectorSize(); i++){
-        output = output + input.recipe::getStep(i) + "\n";
-    }
-    return output;
-}
-
-string returnConcatStringIngredients(recipe input){
-    string output;
-    for (int i = 0; i<input.recipe::getIngredientsVectorSize(); i++){
-        output = output + input.recipe::getIngredient(i) + "\n";
-    }
-    return output;
-}
-
-string returnConcatStringEquipment(recipe input){
-    string output;
-    for (int i = 0; i<input.recipe::getEquipmentVectorSize(); i++){
-        output = output + input.recipe::getEquipment(i) + "\n";
-    }
-    return output;
-}*/

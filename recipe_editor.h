@@ -15,8 +15,12 @@ class Recipe_Editor : public QMainWindow
 
 public:
     explicit Recipe_Editor(QWidget *parent = nullptr);
-    void displayRecipe(int index);
+
     ~Recipe_Editor();
+
+    int recipeIndex;
+
+    void displayRecipe(int index);
 
     bool openedFromViewer = false;
 
@@ -46,6 +50,8 @@ private slots:
     void on_actionCancel_triggered();
 
     void on_actionSearch_triggered();
+
+    void on_actionDelete_Recipe_triggered();
 
 private:
     Ui::Recipe_Editor *ui;

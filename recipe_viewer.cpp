@@ -184,7 +184,21 @@ void Recipe_Viewer::on_actionEdit_this_recipe_triggered()
 
 void Recipe_Viewer::on_actionDelete_Recipe_triggered()
 {
-//implement after delete
+
+    QMessageBox::StandardButton reply;
+
+    reply = QMessageBox::question(this, "Delete Recipe?","Are you sure you want to delete this recipe?",QMessageBox::Yes|QMessageBox::No);
+
+    if(reply == QMessageBox::Yes){
+
+        DeleteRecipe(recipeIndex);
+
+        HomePage*  home = new HomePage();
+        home->setAttribute(Qt::WA_DeleteOnClose);
+        home->show();
+        this->close();
+
+       }
 }
 
 void Recipe_Viewer::on_pushButton_clicked()

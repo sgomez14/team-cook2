@@ -31,17 +31,13 @@ Recipe_Editor::~Recipe_Editor()
 
 void Recipe_Editor::displayRecipe(int index){
 
-    int recipeIndex = index;
+    recipeIndex = index;
 
     vector<recipe> cookbook;
 
     load(cookbook);
 
     QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
-
-    //cout <<"Recipe Name: " <<  cookbook[recipeIndex].getName() << endl;
-    //cout << "Image Address: " << cookbook[recipeIndex].getImageAddress() << endl;
-
 
     QString ingredients = QString::fromStdString(cookbook[recipeIndex].returnConcatStringIngredients());
 
@@ -86,7 +82,7 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
     if (recipeNameField.isEmpty()){
 
-        QMessageBox::warning(this, "Home","Recipe Name is Required to Save");
+        QMessageBox::warning(this, "Recipe Name Missing","Recipe Name is Required to Save");
 
     }
     else if (openedFromViewer == false){
@@ -134,6 +130,12 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
             home->show();
             this->close();
        }
+    else{
+        HomePage*  home = new HomePage();
+        home->setAttribute(Qt::WA_DeleteOnClose);
+        home->show();
+        this->close();
+    }
 }
 
 
@@ -169,16 +171,14 @@ void Recipe_Editor::on_uploadButton_clicked()
         }
     }
 
-
-
-
-
 }
 
 void Recipe_Editor::on_actionHome_triggered()
 {
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "Home","Are you sure you want to exit without saving?",QMessageBox::Yes|QMessageBox::No);
+
+    reply = QMessageBox::question(this, "Exit without Saving?","Are you sure you want to exit without saving?",QMessageBox::Yes|QMessageBox::No);
+
     if(reply == QMessageBox::Yes){
         HomePage*  home = new HomePage();
         home->setAttribute(Qt::WA_DeleteOnClose);
@@ -200,8 +200,33 @@ void Recipe_Editor::on_actionCancel_triggered()
 
 void Recipe_Editor::on_actionSearch_triggered()
 {
-    SearchPage*  searchpage = new SearchPage();
-    searchpage->setAttribute(Qt::WA_DeleteOnClose);
-    searchpage->show();
-    this->close();
+
+    QMessageBox::StandardButton reply;
+
+    reply = QMessageBox::question(this, "Exit without Saving?","Are you sure you want to exit without saving?",QMessageBox::Yes|QMessageBox::No);
+
+
+    if(reply == QMessageBox::Yes){
+        SearchPage*  searchpage = new SearchPage();
+        searchpage->setAttribute(Qt::WA_DeleteOnClose);
+        searchpage->show();
+        this->close();
+    }
+}
+
+void Recipe_Editor::on_actionDelete_Recipe_triggered()
+{
+    QMessageBox::StandardButton reply;
+
+    reply = QMessageBox::question(this, "Delete Recipe?","Are you sure you want to delete this recipe?",QMessageBox::Yes|QMessageBox::No);
+
+    if(reply == QMessageBox::Yes){
+
+        DeleteRecipe(recipeIndex);
+
+        HomePage*  home = new HomePage();
+        home->setAttribute(Qt::WA_DeleteOnClose);
+        home->show();
+        this->close();
+    }
 }
