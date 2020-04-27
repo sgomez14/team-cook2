@@ -108,7 +108,11 @@ void DeleteRecipe(int n){
     }
     inputTemp.close();
     input.close();
-
+    //Clearing old file
+    remove(path.c_str());
+    //Renaming new edited file
+    rename("temp.txt",path.c_str());
+    cout << "DELETE SUCCESSFUL" << endl;
 }
 
 void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIngredients, string newEquipment){
