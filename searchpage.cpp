@@ -35,6 +35,7 @@ SearchPage::~SearchPage()
 
 void SearchPage::on_searchButton_clicked()
 {
+    searchResults.clear();
     ui->searchResultsList->clear();
 
     QString searchInput = ui->searchLine->text();
