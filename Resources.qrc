@@ -21,5 +21,6 @@
         <file>icons/menu1.png</file>
         <file>icons/saveYellow.png</file>
         <file>icons/upload.png</file>
+        <file>img/Loading2.png</file>
     </qresource>
 </RCC>

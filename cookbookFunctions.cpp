@@ -192,7 +192,7 @@ string ReplaceAll(string str, const string& oldText, const string& newText) {
     return str;
 }
 
-vector<int> searchIndices(string input, vector<recipe> reference){                          //Accepts an input reference cookbook and makes a vector containing just the indices if there's a match. Very light weight relative to tossing vectors.
+vector<int> searchCookbook(string input, vector<recipe> reference){                          //Accepts an input reference cookbook and makes a vector containing just the indices if there's a match. Very light weight relative to tossing vectors.
     vector<int> output;
     for (int i = 0; i < reference.size();i++){
         if (reference[i].recipe::getName().find(input) != string::npos){

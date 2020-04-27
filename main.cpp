@@ -6,6 +6,8 @@
 #include <QTextStream>
 #include "cookbookFunctions.h"
 #include "recipe.h"
+#include <QSplashScreen>
+#include <QTimer>
 
 
 #include <QApplication>
@@ -29,6 +31,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    QSplashScreen *splash=new QSplashScreen;
+        splash->setPixmap (QPixmap(":/resources/img/Loading2.png"));
+        splash->show();
+
+
      QString css =readTextFile(":/resources/style/style.css");
 
     if (css.length()>0)
@@ -38,18 +45,18 @@ int main(int argc, char *argv[])
 
     initialise();
 
-
-    HomePage w;
-    w.show();
-
     QDir picturePath;
 
     QString recipePictures = "recipePictures";
 
     picturePath.mkpath(recipePictures);
 
-    //Recipe_Editor editor;
 
-    //editor.show();
+    HomePage w;
+
+    QTimer::singleShot(2500, splash, SLOT(close()));
+    QTimer::singleShot(2500, &w, SLOT(show()));
+
+
     return a.exec();
 }

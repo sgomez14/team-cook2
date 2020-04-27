@@ -28,6 +28,15 @@ border-radius : 8px;
 height : 20px;
 }
 
+QLineEdit {
+background-color: #f0f0f0;
+border : 2px solid gray;
+padding: 1px;
+border-radius : 8px;
+height : 20px;
+font-size: 12pt;
+}
+
 QLabel {
 color: white;
 }

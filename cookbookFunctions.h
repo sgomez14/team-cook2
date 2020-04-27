@@ -27,7 +27,7 @@ void vectorDump(vector<recipe> &input);
 
 string ReplaceAll(string str, const string& oldText, const string& newText);
 
-vector<int> searchIndices(string input, vector<recipe> reference);
+vector<int> searchCookbook(string input, vector<recipe> reference);
 
 /*string returnConcatStringSteps(recipe input);
 

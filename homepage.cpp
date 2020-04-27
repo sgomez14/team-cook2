@@ -15,6 +15,7 @@
 #include <iostream>
 #include <QIcon>
 #include <QObject>
+#include "searchpage.h"
 
 
 using namespace std;
@@ -83,7 +84,6 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 {
 
 
-    //cout << ui->recipeList->currentRow() <<endl;
     int index = ui->recipeList->currentRow();
     Recipe_Viewer *viewRecipe = new Recipe_Viewer();
 
@@ -96,9 +96,6 @@ void HomePage::on_recipeList_itemClicked(QListWidgetItem *item)
 
     viewRecipe->displayRecipe(index);
 
-    //cout << "Calling recipe index: " << viewRecipe->recipeIndex << endl;
-
-
     viewRecipe->show();
     this->close();
 }
@@ -110,4 +107,23 @@ void HomePage::on_actionNew_Recipe_triggered()
     editorPage->setAttribute(Qt::WA_DeleteOnClose);
     editorPage->show();
     this->close();
+}
+
+void HomePage::on_mainSearchButton_clicked()
+{
+    QString searchInput = ui->searchLine->text();
+
+    SearchPage *searchPage = new SearchPage();
+    searchPage->setAttribute(Qt::WA_DeleteOnClose);
+
+    searchPage->searchFromHome(searchInput);
+
+    searchPage->show();
+    this->close();
+
+}
+
+void HomePage::on_searchLine_returnPressed()
+{
+    HomePage::on_mainSearchButton_clicked();
 }

@@ -39,6 +39,10 @@ private slots:
 
     void on_actionNew_Recipe_triggered();
 
+    void on_mainSearchButton_clicked();
+
+    void on_searchLine_returnPressed();
+
 private:
     Ui::HomePage *ui;
 
