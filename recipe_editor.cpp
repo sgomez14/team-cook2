@@ -37,6 +37,8 @@ void Recipe_Editor::displayRecipe(int index){
 
     load(cookbook);
 
+    recipeImagePath = QString::fromStdString(cookbook[recipeIndex].getImageAddress());
+
     QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
 
     QString ingredients = QString::fromStdString(cookbook[recipeIndex].returnConcatStringIngredients());
@@ -98,15 +100,6 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
     //saving recipe when creating new recipe
     else if (openedFromViewer == false){
 
-        /*QString recipeName = ui->recipeNameText->toPlainText();
-
-        QString ingredients = ui->ingredientsText->toPlainText();
-
-        QString instructions = ui->instructionsText->toPlainText();
-
-        QString equipment = ui->equipmentText->toPlainText();
-
-        QString imageAddress;*/
 
         //saving photo that user uploaded
         if (!userImagePath.isEmpty()){
@@ -154,11 +147,9 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
         load(cookbook);
 
         //the image will be either what user saved before, their new photo, or the default photo if they reset it.
-        string imageAddress = cookbook[recipeIndex].getImageAddress();
 
-        cout << imageAddress << endl;
 
-        EditRecipe(cookbook, recipeIndex, recipeNameField.toStdString(), instructions.toStdString(),ingredients.toStdString(), equipment.toStdString(),imageAddress);
+        EditRecipe(cookbook, recipeIndex, recipeNameField.toStdString(), instructions.toStdString(),ingredients.toStdString(), equipment.toStdString(),recipeImagePath.toStdString());
 
 
         HomePage*  home = new HomePage();
@@ -263,15 +254,15 @@ void Recipe_Editor::on_actionDelete_Recipe_triggered()
 void Recipe_Editor::on_resetPhotoButton_clicked()
 {
     ui->photoLabel->clear();
-    userImagePath = ":/resources/img/spices.jpg";
+    //userImagePath = ":/resources/img/spices.jpg";
     recipeImagePath = ":/resources/img/spices.jpg";
 
     QImage image;
 
-    if (QString::compare(userImagePath, QString()) != 0)
+    if (QString::compare(recipeImagePath, QString()) != 0)
     {
 
-        bool valid = image.load(userImagePath);
+        bool valid = image.load(recipeImagePath);
 
         if(valid)
         {
