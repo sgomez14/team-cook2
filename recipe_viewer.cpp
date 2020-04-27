@@ -37,7 +37,6 @@ void Recipe_Viewer::setIndex(int index){
 
     recipeIndex = index;
 
-    cout << "Recipe Index set" << endl;
 }
 
 
@@ -54,9 +53,6 @@ void Recipe_Viewer::displayRecipe(int index){
     load(cookbook);
 
     QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
-
-    cout <<"Recipe Name: " <<  cookbook[recipeIndex].getName() << endl;
-    cout << "Image Address: " << cookbook[recipeIndex].getImageAddress() << endl;
 
     QString ingredients = QString::fromStdString(cookbook[recipeIndex].returnConcatStringIngredients());
 
@@ -190,8 +186,7 @@ void Recipe_Viewer::on_actionDelete_Recipe_triggered()
     reply = QMessageBox::question(this, "Delete Recipe?","Are you sure you want to delete this recipe?",QMessageBox::Yes|QMessageBox::No);
 
     if(reply == QMessageBox::Yes){
-        cout << recipeIndex << endl;
-        cout << "DELETE HERE" << endl;
+
         DeleteRecipe(recipeIndex);
 
         HomePage*  home = new HomePage();

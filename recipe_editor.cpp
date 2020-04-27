@@ -221,8 +221,7 @@ void Recipe_Editor::on_actionDelete_Recipe_triggered()
     reply = QMessageBox::question(this, "Delete Recipe?","Are you sure you want to delete this recipe?",QMessageBox::Yes|QMessageBox::No);
 
     if(reply == QMessageBox::Yes){
-        cout << recipeIndex << endl;
-        cout << "DELETE HERE" << endl;
+
         DeleteRecipe(recipeIndex);
 
         HomePage*  home = new HomePage();

@@ -28,7 +28,8 @@ void initialise(){
 
 void load(vector<recipe> &cookbook){
 
-    cout << path << endl;
+    //cout << path << endl;
+
     cookbook.clear();
     ifstream input;
     vector<string> ingredients;
@@ -112,7 +113,8 @@ void DeleteRecipe(int n){
     remove(path.c_str());
     //Renaming new edited file
     rename("temp.txt",path.c_str());
-    cout << "DELETE SUCCESSFUL" << endl;
+
+    //cout << "DELETE SUCCESSFUL" << endl;
 }
 
 void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIngredients, string newEquipment){

@@ -34,16 +34,10 @@ HomePage::HomePage(QWidget *parent)
 
     load(cookbook);
 
-    /*while (!readIn.atEnd()){
-        receipeVector.append(readIn.readLine());
-    }*/
 
 
     for (int i=0; i < cookbook.size() ; i++) {
 
-        //cout << "Reading in new recipe" << endl;
-
-        cout << "Recipe Image " << cookbook[i].getImageAddress() << endl;
 
         ui->recipeList->addItem(new QListWidgetItem(QIcon(QString::fromStdString(cookbook[i].getImageAddress())), QString::fromStdString((cookbook)[i].getName())));
 

@@ -55,10 +55,10 @@ void SearchPage::on_searchButton_clicked()
          QString searchDisplayText;
             if (searchResults.size() > 1){
 
-                searchDisplayText = QString::number(searchResults.size()) + " recipes found.";
+                searchDisplayText = QString::number(searchResults.size()) + " Recipes Found";
             }
             else{
-                searchDisplayText = "1 Recipe Found.";
+                searchDisplayText = "1 Recipe Found";
             }
 
             ui->searchResultsText->setText(searchDisplayText);
