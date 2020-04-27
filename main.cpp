@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     QSplashScreen *splash=new QSplashScreen;
-        splash->setPixmap (QPixmap(":/resources/img/Loading2.png"));
+        splash->setPixmap (QPixmap(":/resources/img/Loading4.png"));
         splash->show();
 
 

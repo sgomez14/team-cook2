@@ -22,5 +22,7 @@
         <file>icons/saveYellow.png</file>
         <file>icons/upload.png</file>
         <file>img/Loading2.png</file>
+        <file>img/Loading4.png</file>
+        <file>icons/pencil.png</file>
     </qresource>
 </RCC>

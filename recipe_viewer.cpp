@@ -68,6 +68,27 @@ void Recipe_Viewer::displayRecipe(int index){
     ui->ingredientsText->setText(ingredients);
     ui->instructionsText->setText(instructions);
     ui->equipmentText->setText(equipment);
+
+    QString imgPath = QString::fromStdString(cookbook[recipeIndex].getImageAddress());
+
+    QImage image;
+
+    if (!image.load(imgPath)){
+
+        QImage defaultPicture;
+
+        defaultPicture.load(":/resources/img/spices.jpg");
+
+        QImage defaultPictureScaled = defaultPicture.scaledToWidth(ui->recipeImageLabel->width(),Qt::SmoothTransformation);
+
+        ui->recipeImageLabel->setPixmap(QPixmap::fromImage(defaultPictureScaled));
+    }
+    else{
+        QImage scaledRecipePicture = image.scaledToWidth(ui->recipeImageLabel->width(),Qt::SmoothTransformation);
+
+        ui->recipeImageLabel->setPixmap(QPixmap::fromImage(scaledRecipePicture));
+    }
+
 }
 
 
@@ -164,4 +185,9 @@ void Recipe_Viewer::on_actionEdit_this_recipe_triggered()
 void Recipe_Viewer::on_actionDelete_Recipe_triggered()
 {
 //implement after delete
+}
+
+void Recipe_Viewer::on_pushButton_clicked()
+{
+    Recipe_Viewer::on_actionHome_triggered();
 }

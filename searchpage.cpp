@@ -104,10 +104,10 @@ void SearchPage::searchFromHome(QString searchInput){
          QString searchDisplayText;
             if (searchResults.size() > 1){
 
-                searchDisplayText = QString::number(searchResults.size()) + " recipes found.";
+                searchDisplayText = QString::number(searchResults.size()) + " Recipes Found";
             }
             else{
-                searchDisplayText = "1 Recipe Found.";
+                searchDisplayText = "1 Recipe Found";
             }
 
             ui->searchResultsText->setText(searchDisplayText);
@@ -190,12 +190,6 @@ void SearchPage::on_searchResultsList_itemClicked(QListWidgetItem *item)
     viewRecipe->displayRecipe(index);
 
     viewRecipe->show();
-
-void SearchPage::on_actionCancel_triggered()
-{
-    HomePage*  home = new HomePage();
-    home->setAttribute(Qt::WA_DeleteOnClose);
-    home->show();
-
     this->close();
 }
+

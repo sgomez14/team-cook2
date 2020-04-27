@@ -360,7 +360,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normalon>:/resources/icons/save.png</normalon>
+          <normalon>:/resources/icons/saveYellow.png</normalon>
          </iconset>
         </property>
        </widget>

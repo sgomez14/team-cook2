@@ -127,3 +127,12 @@ void HomePage::on_searchLine_returnPressed()
 {
     HomePage::on_mainSearchButton_clicked();
 }
+
+void HomePage::on_actionSearch_triggered()
+{
+    SearchPage *searchPage = new SearchPage();
+    searchPage->setAttribute(Qt::WA_DeleteOnClose);
+
+    searchPage->show();
+    this->close();
+}

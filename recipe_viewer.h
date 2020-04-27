@@ -46,6 +46,8 @@ private slots:
 
     void on_actionDelete_Recipe_triggered();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Recipe_Viewer *ui;
 

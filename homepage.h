@@ -43,6 +43,8 @@ private slots:
 
     void on_searchLine_returnPressed();
 
+    void on_actionSearch_triggered();
+
 private:
     Ui::HomePage *ui;
 

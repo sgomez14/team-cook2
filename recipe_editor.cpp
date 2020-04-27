@@ -53,6 +53,28 @@ void Recipe_Editor::displayRecipe(int index){
     ui->ingredientsText->setText(ingredients);
     ui->instructionsText->setText(instructions);
     ui->equipmentText->setText(equipment);
+
+    QString imgPath = QString::fromStdString(cookbook[recipeIndex].getImageAddress());
+
+    QImage image;
+
+    if (!image.load(imgPath)){
+
+        QImage defaultPicture;
+
+        defaultPicture.load(":/resources/img/spices.jpg");
+
+        QImage defaultPictureScaled = defaultPicture.scaledToWidth(ui->photoLabel->width(),Qt::SmoothTransformation);
+
+        ui->photoLabel->setPixmap(QPixmap::fromImage(defaultPictureScaled));
+    }
+    else{
+        QImage scaledRecipePicture = image.scaledToHeight(ui->photoLabel->height(),Qt::SmoothTransformation);
+
+        ui->photoLabel->setPixmap(QPixmap::fromImage(scaledRecipePicture));
+    }
+
+
 }
 
 
@@ -60,7 +82,14 @@ void Recipe_Editor::displayRecipe(int index){
 void Recipe_Editor::on_saveRecipeButton_clicked()
 {
 
-    if (openedFromViewer == false){
+    QString recipeNameField = ui->recipeNameText->toPlainText();
+
+    if (recipeNameField.isEmpty()){
+
+        QMessageBox::warning(this, "Home","Recipe Name is Required to Save");
+
+    }
+    else if (openedFromViewer == false){
 
         QString recipeName = ui->recipeNameText->toPlainText();
 
@@ -98,20 +127,16 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
 
         WriteRecipe(recipeName.toStdString(),instructions.toStdString(), ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
+
+
+            HomePage*  home = new HomePage();
+            home->setAttribute(Qt::WA_DeleteOnClose);
+            home->show();
+            this->close();
        }
-
-
-
-
-
-    HomePage*  home = new HomePage();
-    home->setAttribute(Qt::WA_DeleteOnClose);
-    home->show();
-    this->close();
-
-
-
 }
+
+
 
 void Recipe_Editor::on_cancelButton_clicked()
 {
