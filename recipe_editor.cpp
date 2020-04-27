@@ -156,7 +156,7 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
         //the image will be either what user saved before, their new photo, or the default photo if they reset it.
         imageAddress = recipeImagePath;
 
-        EditRecipe(cookbook, recipeIndex, instructions.toStdString(),ingredients.toStdString(), equipment.toStdString());
+        EditRecipe(cookbook, recipeIndex, recipeNameField.toStdString(), instructions.toStdString(),ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
 
 
         HomePage*  home = new HomePage();

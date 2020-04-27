@@ -21,7 +21,7 @@ void initialise();
 
 void load(vector<recipe> &temp);
 
-void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIngredients, string newEquipment);
+void EditRecipe(vector<recipe> &input, int index, string name, string newSteps, string newIngredients, string newEquipment, string imageAddress);
 
 void vectorDump(vector<recipe> &input);
 

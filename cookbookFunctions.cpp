@@ -117,7 +117,7 @@ void DeleteRecipe(int n){
     //cout << "DELETE SUCCESSFUL" << endl;
 }
 
-void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIngredients, string newEquipment){
+void EditRecipe(vector<recipe> &input, int index, string name, string newSteps, string newIngredients, string newEquipment,string imageAddress){
 
     if (index>=input.size())
     {
@@ -127,6 +127,8 @@ void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIng
     else{
 
         //cout << "Replacing Strings" << endl;
+        input[index].setName(name);
+        input[index].setImageAddress(imageAddress);
         newSteps = ReplaceAll(newSteps, "\n","^");
         newIngredients = ReplaceAll(newIngredients, "\n","^");
         newEquipment = ReplaceAll(newEquipment, "\n","^");
@@ -224,7 +226,10 @@ void vectorDump(vector<recipe> &input){
         inputTemp << line << endl;
     }
     inputTemp.close();
-
+    //Clearing old file
+    remove(path.c_str());
+    //Renaming new edited file
+    rename("temp.txt",path.c_str());
 }
 
 void indexBook(vector<recipe> cookbook){
