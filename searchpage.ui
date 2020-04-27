@@ -267,7 +267,11 @@
      </layout>
     </item>
     <item>
-     <widget class="QListWidget" name="searchResultsList"/>
+     <widget class="QListWidget" name="searchResultsList">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

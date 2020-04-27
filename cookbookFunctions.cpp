@@ -126,7 +126,7 @@ void EditRecipe(vector<recipe> &input, int index, string newSteps, string newIng
     }
     else{
 
-        cout << "Replacing Strings" << endl;
+        //cout << "Replacing Strings" << endl;
         newSteps = ReplaceAll(newSteps, "\n","^");
         newIngredients = ReplaceAll(newIngredients, "\n","^");
         newEquipment = ReplaceAll(newEquipment, "\n","^");

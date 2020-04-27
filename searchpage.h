@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QListWidgetItem>
-
+#include <vector>
+#include <QVector>
 
 namespace Ui {
 class SearchPage;
@@ -19,6 +20,8 @@ public:
 
 
     void searchFromHome(QString searchInput);
+
+    QVector<int> searchResults;
 
 
 private slots:

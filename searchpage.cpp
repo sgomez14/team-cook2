@@ -43,7 +43,19 @@ void SearchPage::on_searchButton_clicked()
 
     load(cookbook);
 
-    vector<int> searchResults = searchCookbook(searchInput.toStdString(), cookbook);
+     vector<int> cppVector = searchCookbook(searchInput.toStdString(), cookbook);
+
+    //vector<int> searchResults = searchCookbook(searchInput.toStdString(), cookbook);
+
+     for (unsigned long int i = 0; i< cppVector.size(); i++){
+
+         searchResults.append(cppVector[i]);
+
+         cout << searchResults[i] << endl;
+
+     }
+
+
 
      if (searchResults.size() == 0){
 
@@ -92,7 +104,17 @@ void SearchPage::searchFromHome(QString searchInput){
 
     load(cookbook);
 
-    vector<int> searchResults = searchCookbook(searchInput.toStdString(), cookbook);
+    //vector<int> searchResults = searchCookbook(searchInput.toStdString(), cookbook);
+
+    vector<int> cppVector = searchCookbook(searchInput.toStdString(), cookbook);
+
+    for (unsigned long int i = 0; i< cppVector.size(); i++){
+
+        searchResults.append(cppVector[i]);
+
+        cout << searchResults[i] << endl;
+
+    }
 
      if (searchResults.size() == 0){
 
@@ -185,9 +207,9 @@ void SearchPage::on_searchResultsList_itemClicked(QListWidgetItem *item)
 
     load(cookbook);
 
-    viewRecipe->setIndex(index);
+    viewRecipe->setIndex(searchResults[index]);
 
-    viewRecipe->displayRecipe(index);
+    viewRecipe->displayRecipe(searchResults[index]);
 
     viewRecipe->show();
     this->close();

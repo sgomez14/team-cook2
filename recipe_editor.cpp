@@ -131,6 +131,9 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
             this->close();
        }
     else{
+
+
+
         HomePage*  home = new HomePage();
         home->setAttribute(Qt::WA_DeleteOnClose);
         home->show();
@@ -166,8 +169,7 @@ void Recipe_Editor::on_uploadButton_clicked()
         }
         else
         {
-            //error handling
-            //need to configure message box to say that image didn't save properly
+            QMessageBox::warning(this, "Photo Upload Error","Photo Did Not Upload. Try Again.");
         }
     }
 
@@ -228,5 +230,29 @@ void Recipe_Editor::on_actionDelete_Recipe_triggered()
         home->setAttribute(Qt::WA_DeleteOnClose);
         home->show();
         this->close();
+    }
+}
+
+void Recipe_Editor::on_resetPhotoButton_clicked()
+{
+    ui->photoLabel->clear();
+    userImagePath = ":/resources/img/spices.jpg";
+
+    QImage image;
+
+    if (QString::compare(userImagePath, QString()) != 0)
+    {
+
+        bool valid = image.load(userImagePath);
+
+        if(valid)
+        {
+             QImage scaledImage = image.scaledToHeight(ui->photoLabel->width(),Qt::SmoothTransformation);
+            ui->photoLabel->setPixmap(QPixmap::fromImage(scaledImage));
+        }
+        else
+        {
+            QMessageBox::warning(this, "Photo Upload Error","Photo Did Not Upload. Try Again.");
+        }
     }
 }

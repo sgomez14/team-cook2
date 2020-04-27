@@ -53,6 +53,8 @@ private slots:
 
     void on_actionDelete_Recipe_triggered();
 
+    void on_resetPhotoButton_clicked();
+
 private:
     Ui::Recipe_Editor *ui;
 };

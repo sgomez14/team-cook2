@@ -148,7 +148,7 @@
        <enum>QFrame::Raised</enum>
       </property>
       <property name="spacing">
-       <number>0</number>
+       <number>5</number>
       </property>
      </widget>
     </item>
