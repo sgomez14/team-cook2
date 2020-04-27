@@ -107,13 +107,18 @@ void HomePage::on_mainSearchButton_clicked()
 {
     QString searchInput = ui->searchLine->text();
 
-    SearchPage *searchPage = new SearchPage();
-    searchPage->setAttribute(Qt::WA_DeleteOnClose);
+    if (searchInput.isEmpty() == false){
 
-    searchPage->searchFromHome(searchInput);
+        SearchPage *searchPage = new SearchPage();
+        searchPage->setAttribute(Qt::WA_DeleteOnClose);
 
-    searchPage->show();
-    this->close();
+        searchPage->searchFromHome(searchInput);
+
+        searchPage->show();
+        this->close();
+    }
+    else
+        QMessageBox::information(this,"Search Input Empty", "You did not enter any text into the search bar.");
 
 }
 

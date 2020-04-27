@@ -31,6 +31,7 @@ Recipe_Editor::~Recipe_Editor()
 
 void Recipe_Editor::displayRecipe(int index){
 
+
     recipeIndex = index;
 
     vector<recipe> cookbook;
@@ -38,6 +39,7 @@ void Recipe_Editor::displayRecipe(int index){
     load(cookbook);
 
     recipeImagePath = QString::fromStdString(cookbook[recipeIndex].getImageAddress());
+
 
     QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
 
@@ -140,16 +142,37 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
     //saving recipe after it was opened from recipe viewer window
     else{
 
-        cout << "Entered the edit function area" << endl;
-
         vector<recipe> cookbook;
 
         load(cookbook);
 
         //the image will be either what user saved before, their new photo, or the default photo if they reset it.
+        //save new image
+        if (!userImagePath.isEmpty()){
+
+            QDir currentDir;
 
 
-        EditRecipe(cookbook, recipeIndex, recipeNameField.toStdString(), instructions.toStdString(),ingredients.toStdString(), equipment.toStdString(),recipeImagePath.toStdString());
+            QString current = QString(currentDir.currentPath());
+
+            QFileInfo fileInfo(userImagePath);
+
+            recipeImagePath = current + "/recipePictures/" + fileInfo.fileName();
+
+            if (QFile(recipeImagePath).exists() != true){
+
+                QFile::copy(userImagePath, recipeImagePath);
+            }
+
+            imageAddress = recipeImagePath;
+
+          }
+        //use perviously saved recipe image
+        else{
+            imageAddress = recipeImagePath;
+        }
+
+        EditRecipe(cookbook, recipeIndex, recipeNameField.toStdString(), instructions.toStdString(),ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
 
 
         HomePage*  home = new HomePage();

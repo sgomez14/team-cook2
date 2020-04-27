@@ -18,6 +18,7 @@
 #include <iostream>
 #include <QIcon>
 #include <QObject>
+#include <QMessageBox>
 
 
 SearchPage::SearchPage(QWidget *parent) :
@@ -35,66 +36,75 @@ SearchPage::~SearchPage()
 
 void SearchPage::on_searchButton_clicked()
 {
+
+
     searchResults.clear();
     ui->searchResultsList->clear();
 
     QString searchInput = ui->searchLine->text();
 
-    vector<recipe> cookbook;
+    if (searchInput.isEmpty()){
+        QMessageBox::information(this,"Search Input Empty", "You did not enter any text into the search bar.");
+    }
+    else{
 
-    load(cookbook);
+        vector<recipe> cookbook;
 
-     vector<int> cppVector = searchCookbook(searchInput.toStdString(), cookbook);
+        load(cookbook);
 
-    //vector<int> searchResults = searchCookbook(searchInput.toStdString(), cookbook);
+         vector<int> cppVector = searchCookbook(searchInput.toStdString(), cookbook);
 
-     for (unsigned long int i = 0; i< cppVector.size(); i++){
+        //vector<int> searchResults = searchCookbook(searchInput.toStdString(), cookbook);
 
-         searchResults.append(cppVector[i]);
+         for (unsigned long int i = 0; i< cppVector.size(); i++){
 
-         cout << searchResults[i] << endl;
+             searchResults.append(cppVector[i]);
 
-     }
+             cout << searchResults[i] << endl;
+
+         }
 
 
 
-     if (searchResults.size() == 0){
+         if (searchResults.size() == 0){
 
-         ui->searchResultsText->setText("No Recipes Found");
+             ui->searchResultsText->setText("No Recipes Found");
 
-     }
-     else{
+         }
+         else{
 
-         QString searchDisplayText;
-            if (searchResults.size() > 1){
+             QString searchDisplayText;
+                if (searchResults.size() > 1){
 
-                searchDisplayText = QString::number(searchResults.size()) + " Recipes Found";
+                    searchDisplayText = QString::number(searchResults.size()) + " Recipes Found";
+                }
+                else{
+                    searchDisplayText = "1 Recipe Found";
+                }
+
+                ui->searchResultsText->setText(searchDisplayText);
+
+
+            for (int i=0; i < searchResults.size(); i++){
+
+                ui->searchResultsList->addItem(new QListWidgetItem(QIcon(QString::fromStdString(cookbook[(searchResults[i])].getImageAddress())), QString::fromStdString((cookbook)[(searchResults[i])].getName())));
+
+
+
+                int count = ui->searchResultsList->count();
+
+                for (int i= 0; i <count; i++){
+                    QListWidgetItem *item = ui->searchResultsList->item(i);
+                    item->setSizeHint(QSize(item->sizeHint().width(), 100));
+                }
+                ui->searchResultsList->setIconSize(QSize(100,100));
+                ui->searchResultsList->setStyleSheet("font: 25pt");
+
             }
-            else{
-                searchDisplayText = "1 Recipe Found";
-            }
-
-            ui->searchResultsText->setText(searchDisplayText);
-
-
-        for (int i=0; i < searchResults.size(); i++){
-
-            ui->searchResultsList->addItem(new QListWidgetItem(QIcon(QString::fromStdString(cookbook[(searchResults[i])].getImageAddress())), QString::fromStdString((cookbook)[(searchResults[i])].getName())));
-
-
-
-            int count = ui->searchResultsList->count();
-
-            for (int i= 0; i <count; i++){
-                QListWidgetItem *item = ui->searchResultsList->item(i);
-                item->setSizeHint(QSize(item->sizeHint().width(), 100));
-            }
-            ui->searchResultsList->setIconSize(QSize(100,100));
-            ui->searchResultsList->setStyleSheet("font: 25pt");
 
         }
 
-    }
+     }
 }
 
 void SearchPage::searchFromHome(QString searchInput){
