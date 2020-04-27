@@ -82,8 +82,8 @@ void WriteRecipe(string name,string steps,string ingredients, string equipment,s
     equipment = ReplaceAll(equipment, string("\n"),string("^"));
 
     ofstream file(path, ios::app);
-    string data("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|" + imageAddress );
-    file << endl << data << endl;
+    string data("buffer|" + name + "|" + ingredients + "|" + steps + "|" + equipment + "|" + imageAddress + "|");
+    file << data << endl;
     file.close();
 
 }
