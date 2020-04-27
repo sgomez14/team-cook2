@@ -18,6 +18,7 @@ public:
 
     ~Recipe_Editor();
 
+    //variable used to keep track of recipe opened from the recipe viwer window
     int recipeIndex;
 
     void displayRecipe(int index);

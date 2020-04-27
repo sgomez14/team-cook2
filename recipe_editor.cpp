@@ -80,14 +80,25 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
     QString recipeNameField = ui->recipeNameText->toPlainText();
 
+    QString ingredients = ui->ingredientsText->toPlainText();
+
+    QString instructions = ui->instructionsText->toPlainText();
+
+    QString equipment = ui->equipmentText->toPlainText();
+
+    QString imageAddress;
+
+    //checking to see if name field is empty. Do not save if it is empty.
     if (recipeNameField.isEmpty()){
 
         QMessageBox::warning(this, "Recipe Name Missing","Recipe Name is Required to Save");
 
     }
+
+    //saving recipe when creating new recipe
     else if (openedFromViewer == false){
 
-        QString recipeName = ui->recipeNameText->toPlainText();
+        /*QString recipeName = ui->recipeNameText->toPlainText();
 
         QString ingredients = ui->ingredientsText->toPlainText();
 
@@ -95,8 +106,9 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
         QString equipment = ui->equipmentText->toPlainText();
 
-        QString imageAddress;
+        QString imageAddress;*/
 
+        //saving photo that user uploaded
         if (!userImagePath.isEmpty()){
 
             QDir currentDir;
@@ -116,13 +128,14 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
             imageAddress = recipeImagePath;
 
           }
+        //if user did not upload photo, then use default recipe photo
         else{
 
             imageAddress = ":/resources/img/spices.jpg"; //default recipe image
         }
 
-
-        WriteRecipe(recipeName.toStdString(),instructions.toStdString(), ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
+        //write the new recipe to the cookbook
+        WriteRecipe(recipeNameField.toStdString(),instructions.toStdString(), ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
 
 
             HomePage*  home = new HomePage();
@@ -130,8 +143,20 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
             home->show();
             this->close();
        }
+
+    //saving recipe after it was opened from recipe viewer window
     else{
 
+        cout << "Entered the edit function area" << endl;
+
+        vector<recipe> cookbook;
+
+        load(cookbook);
+
+        //the image will be either what user saved before, their new photo, or the default photo if they reset it.
+        imageAddress = recipeImagePath;
+
+        EditRecipe(cookbook, recipeIndex, instructions.toStdString(),ingredients.toStdString(), equipment.toStdString());
 
 
         HomePage*  home = new HomePage();
