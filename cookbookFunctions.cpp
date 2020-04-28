@@ -17,7 +17,7 @@ QDir currentDir;
 
 QString current = QString(currentDir.currentPath());
 
-
+//create path to the database file
 const string path=  current.toStdString() + "/database.txt";
 
 

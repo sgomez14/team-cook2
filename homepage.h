@@ -5,18 +5,7 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 
-/*
-    Desired Functionality:
 
-    - This is the default page when the program starts.
-
-    - It will have the search bar at the top.
-
-    - There will be a button that takes you to the recipe editor
-
-    - On this page you will be able to see a list of the recipes with their pictures
-
-*/
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class HomePage; }

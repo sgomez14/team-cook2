@@ -29,9 +29,5 @@ string ReplaceAll(string str, const string& oldText, const string& newText);
 
 vector<int> searchCookbook(string input, vector<recipe> reference);
 
-/*string returnConcatStringSteps(recipe input);
 
-string returnConcatStringIngredients(recipe input);
-
-string returnConcatStringEquipment(recipe input);*/
 

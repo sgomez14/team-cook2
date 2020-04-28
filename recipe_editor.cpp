@@ -82,6 +82,7 @@ void Recipe_Editor::displayRecipe(int index){
 void Recipe_Editor::on_saveRecipeButton_clicked()
 {
 
+    //read in text entered by user
     QString recipeNameField = ui->recipeNameText->toPlainText();
 
     QString ingredients = ui->ingredientsText->toPlainText();
@@ -174,7 +175,7 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
         EditRecipe(cookbook, recipeIndex, recipeNameField.toStdString(), instructions.toStdString(),ingredients.toStdString(), equipment.toStdString(),imageAddress.toStdString());
 
-
+        //call homepage
         HomePage*  home = new HomePage();
         home->setAttribute(Qt::WA_DeleteOnClose);
         home->show();
@@ -186,6 +187,7 @@ void Recipe_Editor::on_saveRecipeButton_clicked()
 
 void Recipe_Editor::on_cancelButton_clicked()
 {
+    //call homepage
     HomePage*  home = new HomePage();
     home->setAttribute(Qt::WA_DeleteOnClose);
     home->show();

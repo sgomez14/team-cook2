@@ -46,12 +46,15 @@ int Recipe_Viewer::getIndex(){
 
 void Recipe_Viewer::displayRecipe(int index){
 
+    //set the recipe index needed to view specific recipe
     recipeIndex = index;
 
     vector<recipe> cookbook;
 
     load(cookbook);
 
+
+    //read Recipe from vector
     QString recipeName = QString::fromStdString(cookbook[recipeIndex].getName());
 
     QString ingredients = QString::fromStdString(cookbook[recipeIndex].returnConcatStringIngredients());
@@ -60,6 +63,7 @@ void Recipe_Viewer::displayRecipe(int index){
 
     QString equipment = QString::fromStdString(cookbook[recipeIndex].returnConcatStringEquipment());
 
+    //set recipe information on GUI
     ui->recipeNameText->setText(recipeName);
     ui->ingredientsText->setText(ingredients);
     ui->instructionsText->setText(instructions);

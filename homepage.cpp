@@ -36,7 +36,7 @@ HomePage::HomePage(QWidget *parent)
 
 
 
-    for (int i=0; i < cookbook.size() ; i++) {
+    for (unsigned int i=0; i < cookbook.size() ; i++) {
 
 
         ui->recipeList->addItem(new QListWidgetItem(QIcon(QString::fromStdString(cookbook[i].getImageAddress())), QString::fromStdString((cookbook)[i].getName())));

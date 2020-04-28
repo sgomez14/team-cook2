@@ -7,10 +7,7 @@
 #include <string>
 using namespace std;
 
-//Idea for importing vectors: Create a new variable for each
-//vector that constantly gets the length of the array, and
-//stores as an int. When initialising, create a for loop for
-//that number when loading to act as seperators.
+
 
 //Recipes Class and functions
 class recipe{

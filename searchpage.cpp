@@ -60,8 +60,6 @@ void SearchPage::on_searchButton_clicked()
 
              searchResults.append(cppVector[i]);
 
-             cout << searchResults[i] << endl;
-
          }
 
 
@@ -115,7 +113,7 @@ void SearchPage::searchFromHome(QString searchInput){
 
     load(cookbook);
 
-    //vector<int> searchResults = searchCookbook(searchInput.toStdString(), cookbook);
+
 
     vector<int> cppVector = searchCookbook(searchInput.toStdString(), cookbook);
 
@@ -123,7 +121,6 @@ void SearchPage::searchFromHome(QString searchInput){
 
         searchResults.append(cppVector[i]);
 
-        cout << searchResults[i] << endl;
 
     }
 
