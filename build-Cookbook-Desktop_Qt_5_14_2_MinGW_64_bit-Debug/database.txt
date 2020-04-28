@@ -1,0 +1,4 @@
+buffer|arroz con leche|adding ingredients back to the list^|here are some instructions^^|big pot^^^^^^^^^|:/resources/img/spices.jpg|
+buffer|roasted nuts|any nut that you want|put in oven for a really long time.|oven|:/resources/img/spices.jpg|
+buffer|third recipe|adding something new^^|||:/resources/img/spices.jpg|
+buffer|Recipe|Recipe. ^Ingredient 1^Ingredient 2^|Put ingredients into bowl. ^Stir. ^Enjoy|Mixer. ^|:/resources/img/spices.jpg|

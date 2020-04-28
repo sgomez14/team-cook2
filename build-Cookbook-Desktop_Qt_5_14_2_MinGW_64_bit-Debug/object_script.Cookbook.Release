@@ -1,10 +1,12 @@
+release/cookbookFunctions.o
 release/main.o
 release/homepage.o
+release/recipe.o
 release/recipe_editor.o
+release/recipe_viewer.o
 release/searchpage.o
-release/viewrecipe.o
 release/qrc_Resources.o
 release/moc_homepage.o
 release/moc_recipe_editor.o
+release/moc_recipe_viewer.o
 release/moc_searchpage.o
-release/moc_viewrecipe.o

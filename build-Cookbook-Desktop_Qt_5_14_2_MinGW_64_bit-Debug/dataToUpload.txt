@@ -1,6 +1,0 @@
-buffer/Tea/Tea,Water,Sugar/Boil,Submerge,Wait,Enjoy,/Microwave/
-buffer/Toast/Bread/Toast bread,/Microwave,toaster if you're boring/
-buffer/Irish Bread/5,6,7,8/Test 1,2,3,4,/9,10,11/
-buffer/Cake/Boxed Cake/Follow stuff on the box/Oven, Mixer/
-buffer/Arroz con leche/rice, milk, sweetened condensed milk, one whole newborn child/mix together!!!!/wooden spoon/
-buffer/Chocolate Cake/Flour, chocolate, cake/mix everything together. and beat stuff up!!!/standmixer/
