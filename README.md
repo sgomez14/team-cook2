@@ -20,7 +20,7 @@ Since you are in the editor, you can run the program in the debug-build state.
 
 Click on the green play button (the one without the bug on it) located on the bottom left corner of the Qt Creator application.
 
-This will launch our program. In the event you encounter an error saying that build dictory needs to be a same level as source files, then you need to go to Build Settings. You can access Build Setting by clicking on the Projects button on that has a wrench on it. Then in Build Settings, under "General" make sure the option "Shadow Build" is not checked off. This should fix the issue. You can now hit the green play button to launch the program.
+This will launch our program. In the event you encounter an error saying that build directory needs to be on the same level as source files, then you need to go to Build Settings. You can access Build Settings by clicking on the Projects button on the left that has a wrench on it. Then in Build Settings, under "General" make sure the option "Shadow Build" is not checked off. This should fix the issue. You can now hit the green play button to launch the program.
 
 
 The first thing you will notice is a loading screen with a welcome message using our application branding.
