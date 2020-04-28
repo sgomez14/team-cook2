@@ -159,12 +159,12 @@ void EditRecipe(vector<recipe> &input, int index, string name, string newSteps, 
 
 }
 
-//Below code based on replacAll by Gauthier Boaglio on Stack Overflow https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string
+//Below code based on replaceAll by Gauthier Boaglio on Stack Overflow https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string
 string ReplaceAll(string str, const string& oldText, const string& newText) {
     size_t start = 0;
     while((start = str.find(oldText, start)) != std::string::npos) {
         str.replace(start, oldText.length(), newText);
-        start += newText.length(); // Handles case where 'to' is a substring of 'from'
+        start += newText.length();
     }
     return str;
 }
